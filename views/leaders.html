@@ -1,0 +1,192 @@
+<div yw-active-menu="Leaders" yw-active-title="Pool leaders" >
+
+
+	<table class="table" style="width: 100%" ng-cloak >
+
+	         <tr><td><center><table >
+
+	         <tr>
+
+	         <td>
+			                  <table ng-cloak ng-if="pool.bestYesterday.pointsDiff >= 0">
+			                  <tr><td colspan="7" ><p class="bg-primary img-rounded" style="text-align: center;">Meilleur ...</p></td></tr>
+			                  <tr>
+
+			                  <td ng-if="pool.bestLast28Days.pointsDiff >= 0">
+			                          <table>
+			                              <tr>
+			                                  <td>
+			                                      <p class="bg-primary leadersTitle img-rounded"><p class="bg-success  img-rounded" style="text-align: center;">1 mois</p>
+			                                      <img class="img-circle"  src="img/teamLogo/{{pool.bestLast28Days.bigLogo}}"style="height: 95px; text-align: center; " title="{{pool.bestLast28Days.teamUserName}}"><br>
+			                                      <p class="bg-success  img-rounded" style="text-align: center;">{{pool.bestLast28Days.pointsDiff}} pts</p>
+			                                  </td>
+			                              </tr>
+			                          </table>
+			                      </td>
+			                      </tr>
+			                  <tr><td ng-if="pool.bestLast14Days.pointsDiff > 0 && liveTeams.topTotalScore == 0">
+			 				                          <table>
+			 				                              <tr>
+			 				                                  <td>
+			 				                                      <p class="bg-primary leadersTitle img-rounded"><p class="bg-danger  img-rounded" style="text-align: center;">2 sem.</p>
+			 				                                      <img class="img-circle"  src="img/teamLogo/{{pool.bestLast14Days.bigLogo}}"style="height: 95px; text-align: center; " title="{{pool.bestLast14Days.teamUserName}}"><br>
+			 				                                      <p class="bg-danger  img-rounded" style="text-align: center;">{{pool.bestLast14Days.pointsDiff}} pts</p>
+			 				                                  </td>
+			 				                              </tr>
+			 				                          </table>
+			                      </td>
+			                      </tr>
+
+			                  <tr>
+			                  <td ng-if="pool.bestLast7Days.pointsDiff >= 0">
+			                      <center><table ng-cloak>
+			                          <tr>
+			                              <td>
+			                                  <p class="bg-primary leadersTitle img-rounded"><p class="bg-primary img-rounded" style="text-align: center;">1 sem.</p>
+			                                  <img class="img-circle"  src="img/teamLogo/{{pool.bestLast7Days.bigLogo}}"style="height: 95px; text-align: center; " title="{{pool.bestLast7Days.teamUserName}}"><br>
+			                                  <p class="bg-primary img-rounded" style="text-align: center;">{{pool.bestLast7Days.pointsDiff}} pts</p>
+			                              </td>
+			                          </tr>
+			                      </table></center>
+			                  </td>
+			                  </tr>
+			                  <tr>
+			                  <td ng-if="pool.bestYesterday.pointsDiff >= 0">
+			                      <center><table ng-cloak>
+			                          <tr>
+			                              <td>
+			                                  <p class="bg-primary leadersTitle img-rounded"><p class="bg-info img-rounded" style="text-align: center;">Hier</p>
+			                                  <img class="img-circle"  src="img/teamLogo/{{pool.bestYesterday.bigLogo}}"style="height: 95px; text-align: center;" title="{{pool.bestYesterday.teamUserName}}"><br>
+			                                  <p class="bg-info img-rounded" style="text-align: center;">{{pool.bestYesterday.pointsDiff}} pts</p>
+			                              </td>
+			                          </tr>
+			                      </table></center>
+			                  </td></tr>
+			                  <tr>
+			                  <td ng-if="liveTeams.teams[0].points > 0">
+			                      <center><table ng-cloak>
+			                          <tr>
+			                              <td>
+			                                  <p class="bg-primary leadersTitle img-rounded"><p class="bg-danger img-rounded"  style="text-align: center;">Ce soir</p>
+			                                  <img class="img-circle"  src="img/teamLogo/{{liveTeams.teams[0].bigLogo}}"style="height: 95px; text-align: center;" title="{{liveTeams.teams[0].teamUserName}}"><br>
+			                                  <p class="bg-danger img-rounded"  style="text-align: center;">{{liveTeams.teams[0].points}} pts</p>
+			                              </td>
+			                          </tr>
+			                      </table></center>
+			                  </td>
+			                  </tr>
+			              </td></table>
+			             </tr></table></center>
+	             </td>
+			 <td><table  style="width: 100%"><tr>
+	         <td colspan ="4" class="searchTitle">Chercher pooleur:<input class="form-control input-lg"
+	                                                                        placeholder="Chercher un pooleur - Tapez ici."
+	                                                                        ng-model="searchKey" value="Search team name" /></td></tr>
+	        <tbody class="row" ng-repeat="pooler in pool.leaders  | filter:searchKey">
+	        <tr class="img-rounded" ng-cloak ><td colspan ="4" ><center><p class="bg-primary leadersTitle img-rounded" >
+				<button type="button" class="btn btn-primary">{{pooler.pos}}</button>
+				<button type="button" class="btn btn-success" ng-if="pooler.diffPosition > 0"><i>+{{pooler.diffPosition}}</i></button>
+	            <button type="button" class="btn btn-danger" ng-if="pooler.diffPosition < 0"><i>{{pooler.diffPosition}}</i></button>
+	        	&nbsp;{{pooler.teamName}}
+	            <img ng-if="pooler.playForCash && pooler.hasPaid" src="img/paid.png" style ="height: 25px;" title="Pooler joue pour l'argent et a paye son 5$.">
+	            <img ng-if="pooler.playForCash && !pooler.hasPaid" src="img/paid-bw.png" style ="height: 25px;" title="Pooler joue pour l'argent et n'a pas paye son 5$.">
+	            <img ng-if="!pooler.playForCash" src="img/happy.png" style ="height: 25px;" title="Pooler joue pour le plaisir seulement.">
+
+	        </p>
+	            <table style="width: 100%"><tr class="leadersScores img-rounded" ng-cloak ng-class-odd="'odd'" ng-class-even="'even'">
+	                <td class="img-rounded " class="img-rounded" ng-class-odd="'odd'" ng-class-even="'even'" ><img  src="img/teamLogo/{{pooler.bigLogo}}" style="width: 225px;" title="{{pooler.teamName}}">
+
+
+
+	                </td>
+	                <!--<td><img   src="img/{{pooler.userLogo}}" style="width: 25%;"></td>-->
+	                <td class="img-rounded bg-success" style="width: 40%;">
+	                <b>B:</b> {{pooler.goals}}&nbsp;<a style="color: black;text-decoration: none; /* no underline */" ng-if="pooler.goalsDiff > 0">[+{{pooler.goalsDiff}}]</a><br><br>
+	                <B>P:</B> {{pooler.passes}}&nbsp;<a style="color: black;text-decoration: none; /* no underline */" ng-if="pooler.passesDiff > 0">[+{{pooler.passesDiff}}]</a><br><br>
+	                <b>W:</b> {{pooler.goaliesWins}}&nbsp;<a style="color: black;text-decoration: none; /* no underline */" ng-if="pooler.goaliesWinDiff > 0">[+{{pooler.goaliesWinDiff}}]</a><br><br>
+	                <b>SO:</b> {{pooler.goaliesShutOuts}}&nbsp;<a style="color: black;text-decoration: none; /* no underline */" ng-if="pooler.goaliesShutOutsDiff > 0">[+{{pooler.goaliesShutOutsDiff}}]</a><br>
+	                </td><td class="img-rounded" ng-class-odd="'odd'" ng-class-even="'even'"><img   src="img/{{pooler.userLogo}}" style="height: 175px;" title="{{pooler.teamUserName}}"><br>
+	                <b>Pts:</b> {{pooler.points}}&nbsp;<a style="color: black;text-decoration: none; /* no underline */" ng-if="pooler.pointsDiff > 0">[+{{pooler.pointsDiff}}]</a><br><br></td></tr></table></center>
+	        </td></tr></table></td>
+
+			<td><center><table ng-cloak><tr>
+
+			                 <td>
+			                     <table ng-cloak >
+			                         <tr><td colspan="7" ><p class="bg-danger img-rounded" style="text-align: center;">Pire...</p></td></tr>
+			                         <tr>
+
+			                             <td ng-if="pool.worstLast28Days.pointsDiff > 0">
+			                                 <table ng-cloak>
+			                                     <tr>
+			                                         <td>
+			                                             <p class="bg-primary leadersTitle img-rounded"><p class="bg-success  img-rounded" style="text-align: center;">1 mois</p>
+			                                             <img class="img-circle"  src="img/teamLogo/{{pool.worstLast28Days.bigLogo}}"style="height: 95px; text-align: center; " title="{{pool.worstLast28Days.teamUserName}}"><br>
+			                                             <p class="bg-success  img-rounded" style="text-align: center;">{{pool.worstLast28Days.pointsDiff}} pts</p>
+			                                         </td>
+			                                     </tr>
+			                                 </table>
+			                             </td></tr><tr>
+			                             <td ng-if="pool.worstLast14Days.pointsDiff > 0 && liveTeams.topTotalScore == 0">
+										                                  <table ng-cloak>
+										                                      <tr>
+										                                          <td>
+										                                              <p class="bg-primary leadersTitle img-rounded"><p class="bg-danger  img-rounded" style="text-align: center;">2 sem.</p>
+										                                              <img class="img-circle"  src="img/teamLogo/{{pool.worstLast14Days.bigLogo}}"style="height: 95px; text-align: center; " title="{{pool.worstLast14Days.teamUserName}}"><br>
+										                                              <p class="bg-danger  img-rounded" style="text-align: center;">{{pool.worstLast14Days.pointsDiff}} pts</p>
+										                                          </td>
+										                                      </tr>
+										                                  </table>
+			                             </td>
+
+			                             </tr><tr>
+			                             <td ng-if="pool.worstLast7Days.pointsDiff > 0">
+			                                 <center><table ng-cloak>
+			                                     <tr>
+			                                         <td>
+			                                             <p class="bg-primary leadersTitle img-rounded"><p class="bg-primary img-rounded" style="text-align: center;">1 sem.</p>
+			                                             <img class="img-circle"  src="img/teamLogo/{{pool.worstLast7Days.bigLogo}}"style="height: 95px; text-align: center; " title="{{pool.worstLast7Days.teamUserName}}"><br>
+			                                             <p class="bg-primary img-rounded" style="text-align: center;">{{pool.worstLast7Days.pointsDiff}} pts</p>
+			                                         </td>
+			                                     </tr>
+			                                 </table></center>
+			                             </td>
+			                             </tr><tr>
+			                             <td >
+			                                 <center><table ng-cloak>
+			                                     <tr>
+			                                         <td>
+			                                             <p class="bg-primary leadersTitle img-rounded"><p class="bg-info img-rounded" style="text-align: center;">Hier</p>
+			                                             <img class="img-circle"  src="img/teamLogo/{{pool.worstYesterday.bigLogo}}"style="height: 95px; text-align: center;" title="{{pool.worstYesterday.teamUserName}}"><br>
+			                                             <p class="bg-info img-rounded" style="text-align: center;">{{pool.worstYesterday.pointsDiff}} pts</p>
+			                                         </td>
+			                                     </tr>
+			                                 </table></center>
+			                             </td>
+			                             </tr><tr>
+										 <td ng-if="liveTeams.teams[0].points > 0">
+										                      <center><table ng-cloak>
+										                          <tr>
+										                              <td>
+										                                  <p class="bg-primary leadersTitle img-rounded"><p class="bg-danger img-rounded"  style="text-align: center;">Ce soir</p>
+										                                  <img class="img-circle"  src="img/teamLogo/{{liveTeams.teams[liveTeams.teams.length-1].bigLogo}}"style="height: 95px; text-align: center;" title="{{liveTeams.teams[liveTeams.teams.length-1].teamUserName}}"><br>
+										                                  <p class="bg-danger img-rounded"  style="text-align: center;">{{liveTeams.teams[liveTeams.teams.length-1].points}} pts</p>
+										                              </td>
+										                          </tr>
+										                      </table></center>
+			                 </td>
+
+			                                         </tr>
+			                         </td></table>
+			             </tr></table></center>
+	             </td>
+
+	        </tr>
+
+	        </tbody>
+
+    </table>
+
+
+
+</div>

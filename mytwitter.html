@@ -1,0 +1,38 @@
+<html>
+
+<body>
+<script src="http://widgets.twimg.com/j/2/widget.js"></script>
+<script>
+new TWTR.Widget({
+  version: 2,
+  type: 'list',
+  rpp: 31,
+  interval: 8000,
+  title: 'Des Nouvelles de ',
+  subject: 'la NHL',
+  width: 225,
+  height: 435,
+  theme: {
+    shell: {
+      background: '#315263',
+      color: '#ffffff'
+    },
+    tweets: {
+      background: '#ffffff',
+      color: '#444444',
+      links: '#ff0000'
+    }
+  },
+  features: {
+    scrollbar: true,
+    loop: true,
+    live: true,
+    hashtags: true,
+    timestamp: true,
+    avatars: true,
+    behavior: 'default'
+  }
+}).render().setList('hugobioinfo', 'nhl').start();
+</script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<div yw-active-menu="Stats"
+     yw-active-title="Players Stats">
+
+    <table  ng-cloak>
+        <tr><td colspan ="6" class="searchTitle">Chercher joueurs:<input class="form-control input-lg"
+                                                                      placeholder="Tapez le nom de votre joueur pour voir ses statistiques et son classement. - Tapez ici."
+                                                                      ng-model="searchKey" value="Search team name" /></td></tr>
+        <tr>
+            <td valign="top">
+                <table class="table table-striped table-hover" ng-cloak>
+                    <thead>
+                    <tr><td colspan="4" class="bg-primary">Meilleurs avants</td></tr>
+                    <tr class="bg-success">
+                        <th class="playerNameStatsHeader">Nom</th>
+                        <th class="playerNameStatsHeader">B</th>
+                        <th class="playerNameStatsHeader">P</th>
+                        <th class="playerNameStatsHeader">Pts</th>
+                    </tr>
+                    </thead>
+
+                    <tbody class="row" ng-repeat="skater in bestForwards.skaters | filter:searchKey" ng-class="{oddRow: $index % 2 == 0}">
+                    <!--<tbody class="row" ng-repeat="i in getTimes(10) track by $index"-->
+
+                    <tr ng-if="$index < 10">
+                        <td  class="bg-info playerName img-rounded"><img class="img-rounded" src="{{skater.photoId}}.jpg" style="width: 40px;"><br>{{skater.fullName}}</td>
+                        <td class="playerNameTeamNumbers">{{skater.goals}}</td>
+                        <td class="playerNameTeamNumbers">{{skater.passes}}</td>
+                        <td class="playerNameTeamNumbers">{{skater.points}}</td>
+
+
+                    </tr>
+
+                    </tbody>
+
+                </table>
+            </td>
+            <td>&nbsp;</td>
+            <td valign="top">
+                <table class="table table-striped table-hover" ng-cloak>
+                    <thead>
+                    <tr><td colspan="4" class="bg-warning">Meilleurs d&eacute;fenseurs</td></tr>
+                    <tr class="bg-success">
+                        <th class="playerNameStatsHeader">Nom</th>
+                        <th class="playerNameStatsHeader">B</th>
+                        <th class="playerNameStatsHeader">P</th>
+                        <th class="playerNameStatsHeader">Pts</th>
+                    </tr>
+                    </thead>
+
+                    <tbody class="row" ng-repeat="skater in bestDefenses.skaters | filter:searchKey"
+                           ng-class="{oddRow: $index % 2 == 0}">
+                    <tr ng-if="$index < 10" >
+                        <td  class="bg-info playerName img-rounded"><img class="img-rounded" src="{{skater.photoId}}.jpg" style="width: 40px;"><br>{{skater.fullName}}</td>
+                        <td class="playerNameTeamNumbers">{{skater.goals}}</td>
+                        <td class="playerNameTeamNumbers">{{skater.passes}}</td>
+                        <td class="playerNameTeamNumbers">{{skater.points}}</td>
+
+
+                    </tr>
+
+                    </tbody>
+
+                </table>
+            </td>
+            <td>&nbsp;</td>
+            <td valign="top">
+                <table class="table table-striped table-hover" ng-cloak>
+                    <thead>
+                    <tr><td colspan="4" class="bg-danger">Meilleurs Gardiens</td></tr>
+                    <tr class="bg-success">
+                        <th class="playerNameStatsHeader">Nom</th>
+                        <th class="playerNameStatsHeader">V</th>
+                        <th class="playerNameStatsHeader">Bl.</th>
+                        <th class="playerNameStatsHeader">Pts</th>
+                    </tr>
+                    </thead>
+
+                    <tbody class="row" ng-repeat="goalie in bestGoalies.goalies | filter:searchKey"
+                           ng-class="{oddRow: $index % 2 == 0}">
+                    <tr ng-if="$index < 10">
+                        <td  class="bg-info playerName img-rounded" align="center"><img class="img-rounded" src="{{goalie.photoId}}.jpg" style="width: 40px;" ><br>{{goalie.fullName}}</td>
+                        <td class="playerNameTeamNumbers" >{{goalie.wins}}</td>
+                        <td class="playerNameTeamNumbers">{{goalie.shutOuts}}</td>
+                        <td class="playerNameTeamNumbers">{{goalie.points}}</td>
+
+
+                    </tr>
+
+                    </tbody>
+
+                </table>
+            </td>
+        </tr>
+    </table>
+</div>

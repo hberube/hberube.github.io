@@ -1,0 +1,28 @@
+<div yw-active-menu="Injuries"
+     yw-active-title="Players Injured"  >
+    <table class="table table-striped table-hover" style="width: 100%" ng-cloak>
+        <tr><td colspan ="3" class="searchTitle">Search player:<input class="form-control input-lg"
+                                                                                      placeholder="Chercher un joueur par son nom ou taper le nom de votre &eacute;quipe pour voir vos bless&eacute;s. - Tapez ici."
+                                                                                      ng-model="searchKey" value="Search team name" /></td></tr>
+        <thead class="bg-primary">
+
+        <th>Noms</th>
+        <th>Blessures</th>
+        <th>&Eacute;quipe</th>
+
+
+        </thead>
+        <tbody class="row" ng-repeat="injury in injuries.injuries | filter:searchKey"
+               ng-class="{oddRow: $index % 2 == 0}">
+        <tr>
+            <td class="playerNameTeam"><img class="img-rounded" src="{{injury.photoId}}.jpg" style="width: 75px;" valign="top"><p class="bg-primary img-rounded" style="text-align: center; font-family: verdana, sans-serif; font-size: 75%;">{{injury.fullName}}</p></td>
+            <td class="playerNameTeam img-rounded " style="font-size: 70%;"><p class="img-rounded" valign="top">{{injury.injuryDescription}}</p></td>
+            <td class="playerNameTeam" style="width: 40%"><a ng-repeat="team in injury.playerInTeams" valign="top"><img src="img/teamLogo/{{team.bigLogo}}" title="{{team.name}}" style="width: 60px;"/></a></td>
+
+        </tr>
+
+        </tbody>
+
+    </table>
+
+</div>

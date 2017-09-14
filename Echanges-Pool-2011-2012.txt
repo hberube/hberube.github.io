@@ -1,0 +1,49 @@
+Louise:
+	Halak -> Howard
+	Whitney -> Karlsson
+	Bourque	-> Hall
+	
+Amelie:
+	Semin -> Spezza
+	Subban -> Byfuglien
+	Ward -> Howard
+	
+Dominic:
+	Krejci -> Kessel
+	Subban -> Lidstrom
+	Price -> Rinne
+	
+Hugues:
+	Stewart -> Spezza
+	Giordano -> Karlsson
+	Ward -> Howard
+	
+Emilie:
+	Stastny -> Briere
+	Subban -> Yandle
+	Brodeur -> Quick
+	
+Andre:
+	Stastny -> Benn
+	Whitney -> Karlsson
+	Luongo -> Thomas
+	
+Vincent:
+	Doughty -> Keith
+	Crosby -> Toews
+	
+Hugo:
+	Miller -> Lundqvist
+	Skinner -> Vanek
+	Chara -> Weber
+	
+Marjo
+Simon
+Sylvianne
+Mathis
+
+
+Jean-Pierre:
+	Bourque -> Callahan
+	Subban -> Yandle (ou Lidstrom)
+	Halak -> Howard (ou Brodeur -> Quick)

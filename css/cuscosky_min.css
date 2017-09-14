@@ -1,0 +1,288 @@
+/* 
+	Cusco Sky table styles
+	written by Braulio Soncco http://www.buayacorp.com
+*/
+table.res,th.res,td.res,tr.res {
+	border: 1px solid #D4E0EE;
+	border-collapse: collapse;
+	font-family: "Trebuchet MS", Arial, sans-serif;
+	color: #555;
+	font-color: #0000A0
+}
+
+td.res,th.res,tr.res {
+	padding: 4px;
+}
+
+caption {
+	font-size: 150%;
+	font-weight: bold;
+	margin: 5px;
+}
+
+p.ann {
+	font-size: 12px;
+}
+
+p.smallann {
+	font-size: 10px;
+}
+
+table td.ann {
+	font-size: 12px;
+}
+
+thead th {
+	text-align: center;
+	background: #E6EDF5;
+	color: #4F76A3;
+	font-size: 100% !important;
+}
+
+tbody th {
+	font-weight: bold;
+}
+
+tbody tr {
+	background: #FCFDFE;
+}
+
+tbody tr.odd {
+	background: #F7F9FC;
+}
+
+table a:link {
+	color: #718ABE;
+	text-decoration: none;
+}
+
+table a:visited {
+	color: #718ABE;
+	text-decoration: none;
+}
+
+table a:hover {
+	color: #718ABE;
+	text-decoration: underline !important;
+}
+
+tfoot th,tfoot td {
+	font-size: 85%;
+}
+
+td.heddb {
+	background-color: #0B243B;
+	color: #fff;
+	padding: 4px;
+	text-align: left;
+	font-weight: bold;
+	font-size: 15px;
+	font-color: white;
+	color: white;
+}
+
+th.heddb {
+	background-color: #2B3856;
+	color: #fff;
+	padding: 4px;
+	text-align: left;
+	font-weight: bold;
+	font-size: 15px;
+	font-color: white;
+	color: white;
+}
+
+th.hedsb {
+	background-color: #2B547E;
+	color: #fff;
+	padding: 4px;
+	text-align: left;
+	font-size: 16px;
+	font-color: white;
+	color: white;
+}
+
+td.hedsb {
+	background-color: #2B547E;
+	color: #fff;
+	padding: 4px;
+	text-align: left;
+	font-size: 16px;
+	font-color: white;
+	color: white;
+}
+
+td.hedwb {
+	background-color: #508fc4;
+	color: #fff;
+	padding: 4px;
+	text-align: left;
+	font-size: 14px;
+	font-color: white;
+	color: white;
+}
+
+th.heddef {
+	font-weight: bold;
+	font-size: 12px;
+	background-color: #616D7E;
+	color: #fff;
+	padding: 4px;
+	text-align: left;
+	vertical-align: top;
+}
+
+td.heddesc {
+	font-weight: bold;
+	font-size: 13px;
+	background-color: #616D7E;
+	color: #fff;
+	padding: 4px;
+	text-align: left;
+	vertical-align: top;
+}
+
+td.hedlb {
+	background-color: #508fc4;
+	color: #fff;
+	padding: 4px;
+	text-align: left;
+	font-size: 15px;
+	font-color: white;
+	color: white;
+	vertical-align: top;
+}
+
+td.helpHed {
+	border-bottom: 2px solid #6699CC;
+	border-left: 1px solid #6699CC;
+	background-color: #508fc4;
+	text-align: left;
+	text-indent: 5px;
+	font-family: Verdana;
+	font-weight: bold;
+	font-size: 11px;
+	color: #fff;
+}
+
+td.helpBod {
+	border-bottom: 1px solid #9CF;
+	border-top: 0px;
+	border-left: 1px solid #9CF;
+	border-right: 0px;
+	text-align: left;
+	text-indent: 10px;
+	font-family: Verdana, sans-serif, Arial;
+	font-weight: normal;
+	font-size: 11px;
+	color: #404040;
+	width: 100px;
+	background-color: #fafafa;
+}
+
+th.sample {
+	border-width: 0px 0px 0px 0px;
+	padding: 3px 3px 3px 3px;
+	border-style: solid solid solid solid;
+	border-color: white white white white;
+	background-color: rgb(80, 143, 196);
+	-moz-border-radius: 3px 3px 3px 3px;
+}
+
+td.sample {
+	border-width: 0px 0px 0px 0px;
+	padding: 3px 3px 3px 3px;
+	border-style: solid solid solid solid;
+	border-color: white white white white;
+	background-color: rgb(80, 143, 196);
+	-moz-border-radius: 3px 3px 3px 3px;
+}
+
+table.sample {
+	border-width: 1px 1px 1px 1px;
+	border-spacing: 2px;
+	border-style: outset outset outset outset;
+	border-color: gray gray gray gray;
+	border-collapse: separate;
+	background-color: #F0F0F0;
+}
+
+table.sample th {
+	border-width: 0px 0px 0px 0px;
+	padding: 0px 0px 0px 0px;
+	border-style: dotted dotted dotted dotted;
+	border-color: gray gray gray gray;
+	background-color: white;
+	-moz-border-radius: 0px 0px 0px 0px;
+}
+
+table.sample td {
+	border-width: 0px 0px 0px 0px;
+	padding: 0px 0px 0px 0px;
+	border-style: dotted dotted dotted dotted;
+	border-color: gray gray gray gray;
+	background-color: white;
+	-moz-border-radius: 0px 0px 0px 0px;
+}
+
+table.sample td.datacellone {
+	background-color: #FFFFFF;
+	color: black;
+}
+
+table.sample td.datacelltwo {
+	background-color: #F0F0F0;
+	color: black;
+}
+
+table.sample td.heddb {
+	background-color: #0B243B;
+	color: #fff;
+	padding: 4px;
+	text-align: left;
+	font-weight: bold;
+	font-size: 15px;
+	font-color: white;
+	color: white;
+}
+
+table.sample td.hedsb {
+	background-color: #2B547E;
+	color: #fff;
+	padding: 4px;
+	text-align: left;
+	font-size: 16px;
+	font-color: white;
+	color: white;
+	
+}
+
+table.sample td.hedwb {
+	background-color: #508fc4;
+	color: #fff;
+	padding: 4px;
+	text-align: left;
+	font-size: 14px;
+	font-color: white;
+	color: white;
+}
+
+table.sample th.heddef {
+	font-weight: bold;
+	font-size: 12px;
+	background-color: #616D7E;
+	color: #fff;
+	padding: 4px;
+	text-align: left;
+	vertical-align: top;
+}
+
+table.sample td.heddesc {
+	font-weight: bold;
+	font-size: 13px;
+	background-color: #616D7E;
+	color: #fff;
+	padding: 4px;
+	text-align: left;
+	vertical-align: top;
+}

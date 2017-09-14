@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/css/main.css" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/css/poolD3.css" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/index.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/index2.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/index_bu.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/json/injuries.json" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/json/leaders - Copy.json" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/json/leaders.json" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/json/live.poolers.json" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/json/teams.json" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/modules/maintenance.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/views/injuries.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/views/stats.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/views/teams.html" charset="UTF-8" />
+  </component>
+</project>

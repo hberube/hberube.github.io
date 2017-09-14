@@ -1,0 +1,50 @@
+@CHARSET "ISO-8859-1";
+
+	.fontsizeSmallBlue {color: #99CCFF;font-family: arial;}
+	.fontsizeSmallTitleBlue {font-size:0.9em;background-color: #0066CC;color:#FFFFFF;font-family: arial;}
+	.fontsizeVSmallBlue {color: #CCCCFF;font-family: arial;}
+	.fontsizeBIGBlue {color: #3366FF;font-family: arial;text-decoration: underline;}
+	.fontsizeVBIGBlue {;color: #0066CC;font-family: arial;text-decoration: underline;}
+	.fontsizeVVBIGBlue {color: #0066CC;font-family: arial;text-decoration: underline;}
+	
+	.fontsizeSmallGreen {color: #CCFF99;font-family: arial;}
+	.fontsizeSmallTitleGreen {font-size:0.9em;background-color: #99CC00;color:#FFFFFF;font-family: arial;}
+	.fontsizeVSmallGreen {color: #CCFFCC;font-family: arial;}
+	.fontsizeBIGGreen {color: #CCFF66;font-family: arial;text-decoration: underline;}
+	.fontsizeVBIGGreen {color: #99CC00;font-family: arial;font-weight: bold;text-decoration: underline;}
+	.fontsizeVVBIGGreen {color: #99CC00;font-family: arial;font-weight: bold;text-decoration: underline;}
+	
+	.fontsizeSmallRed {color: #FF9999;font-family: arial;}
+	.fontsizeSmallTitleRed {font-size:0.9em;background-color: #CC0000;color:#FFFFFF;font-family: arial;}
+	.fontsizeVSmallRed {color: #FFCCCC;font-family: arial;}
+	.fontsizeBIGRed {color: #FF6666;font-family: arial;text-decoration: underline;}
+	.fontsizeVBIGRed {color:  #CC0000;font-family: arial;font-weight: bold;text-decoration: underline;}
+	.fontsizeVVBIGRed {color: #CC0000;font-family: arial;font-weight: bold;text-decoration: underline;}
+	
+	.fontsizeSmallYellow {color: #FFCC00;font-family: arial;}
+	.fontsizeSmallTitleYellow {font-size:0.9em;background-color: #B28F00;color:#FFFFFF;font-family: arial;}
+	.fontsizeVSmallYellow {color: #FFCC00;font-family: arial;}
+	.fontsizeBIGYellow {color: #FFCC00;font-family: arial;text-decoration: underline;}
+	.fontsizeVBIGYellow {color: #B28F00;font-family: arial;font-weight: bold;text-decoration: underline;}
+	.fontsizeVVBIGYellow {color: #B28F00;font-family: arial;font-weight: bold;text-decoration: underline;}
+	
+	.fontsizeSmallGrey {color: #999999;font-family: arial;}
+	.fontsizeSmallTitleGrey {font-size:0.9em;background-color: #999999;color:#FFFFFF;font-family: arial;}
+	.fontsizeVSmallGrey {color: #999999;font-family: arial;}
+	.fontsizeBIGGrey {color: #999999;font-family: arial;text-decoration: underline;}
+	.fontsizeVBIGGrey {color: #666666;font-family: arial;font-weight: bold;text-decoration: underline;}
+	.fontsizeVVBIGGrey {color: #666666;font-family: arial;font-weight: bold;text-decoration: underline;}
+	
+	.fontsizeSmallWhite {color: #FFFFFF;font-family: arial;}
+	.fontsizeSmallTitleWhite {font-size:0.9em;background-color: #FFFFFF;color:#000000;font-family: arial;}
+	.fontsizeVSmallWhite {color: #FFFFFF;font-family: arial;}
+	.fontsizeBIGWhite {color: #FFFFFF;font-family: arial;text-decoration: underline;}
+	.fontsizeVBIGWhite {color: #FFFFFF;font-family: arial;font-weight: bold;text-decoration: underline;}
+	.fontsizeVVBIGWhite{color: #FFFFFF;font-family: arial;font-weight: bold;text-decoration: underline;}
+	
+	.fontsizeSmallOrange {color: #FFCC66;font-family: arial;}
+	.fontsizeSmallTitleOrange {font-size:0.9em;background-color: #FF6600;color:#FFFFFF;font-family: arial;}
+	.fontsizeVSmallOrange{color: #FFCC99;font-family: arial;}
+	.fontsizeBIGOrange {color: #FF9966;font-family: arial;text-decoration: underline;}
+	.fontsizeVBIGOrange {color: #FF6600;font-family: arial;font-weight: bold;text-decoration: underline;}
+	.fontsizeVVBIGOrange {color: #FF6600;font-family: arial;font-weight: bold;text-decoration: underline;}

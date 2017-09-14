@@ -1,0 +1,270 @@
+@CHARSET "ISO-8859-1";
+
+table.res,th.res,td.res,tr.res {
+	border: 1px solid #D4E0EE;
+	border-collapse: collapse;
+	font-family: "Trebuchet MS", Arial, sans-serif;
+	color: #555;
+	font-color: #0000A0;
+}
+
+td.heddesclg {
+	font-weight: bold;
+	font-size: 13px;
+	color: white;
+	background-color: #0B243B;
+}
+
+td.heddesclg_blue {
+	font-weight: bold;
+	font-size: 13px;
+	color: white;
+	background-color: #0000FF;
+}
+
+td.heddesclg_red {
+	font-weight: bold;
+	font-size: 13px;
+	color: white;
+	background-color: #FF0000;
+}
+
+td.heddesclg_orange {
+	font-weight: bold;
+	font-size: 13px;
+	color: white;
+	background-color: #FF4500;
+}
+
+td.heddesclg_white {
+	font-weight: bold;
+	font-size: 13px;
+	color: black;
+	background-color: #FFFFFF;
+}
+
+td.heddesclg_grey {
+	font-weight: bold;
+	font-size: 13px;
+	color: white;
+	background-color: #808080;
+}
+
+td.heddesclg_yellow {
+	font-weight: bold;
+	font-size: 13px;
+	color: white;
+	background-color: #FFD700;
+}
+
+td.heddesclg_green {
+	font-weight: bold;
+	font-size: 13px;
+	color: white;
+	background-color: #008000;
+}
+
+tr.heddesclg_blue {
+	font-weight: bold;
+	font-size: 13px;
+	color: white;
+	background-color: #0000FF;
+}
+
+tr.heddesclg_red {
+	font-weight: bold;
+	font-size: 13px;
+	color: white;
+	background-color: #FF0000;
+}
+
+tr.heddesclg_green {
+	font-weight: bold;
+	font-size: 13px;
+	color: white;
+	background-color: #008000;
+}
+
+tr.heddesclg {
+	font-weight: bold;
+	font-size: 13px;
+	color: white;
+	background-color: #0B243B;
+}
+
+td.hedlb,th.hedlb {
+	background-color: #3d0165;
+	color: #fff;
+	padding: 4px;
+	text-align: center;
+	font-size: 14px;
+	font-color: white;
+	color: white;
+}
+
+td.hedlb {
+	background-color: #508fc4;
+	color: #fff;
+	padding: 4px;
+	text-align: left;
+	font-size: 15px;
+	font-color: white;
+	color: white;
+	vertical-align: top;
+}
+
+table tr.datacellone {
+	font-size: 12px;
+	color: #0B243B;
+	background-color: #FFFFFF;
+
+}
+
+td.genova_tab_sel {
+	font-size: 12px;
+	color: #0B243B;
+	background-color: #0B243B;
+
+}
+	
+td.genova_tab_not_sel {
+	font-size: 12px;
+	color: #0B243B;
+	background-color: #3d0165;
+}
+
+table tr.datacelltwo {
+	font-size: 12px;
+	color: #0B243B;
+	background-color: #F0F0F0;
+	
+}
+
+table td.datacellone {
+	background-color: #FFFFFF;
+	color: black;
+}
+
+
+
+table td.datacelltwo {
+	background-color: #F0F0F0;
+	color: black;
+}
+
+td,th {
+	padding: 0px;
+}
+
+p.ann {
+	font-size: 13px;
+}
+
+p.smallann {
+	font-size: 10px;
+}
+
+table td.ann {
+	font-size: 13px;
+	color: #0B243B;
+	background-color: #ffffff;
+}
+
+a.tablike {
+	text-align: center; /* set to left, right or center */
+		margin: 1em 0 1em 0; /* set margins as desired */
+		font: bold 11px verdana, arial, sans-serif; /* set font as desired */
+		border-bottom: 1px solid #0B243B; /* set border COLOR as desired */
+		list-style-type: none;
+		padding: 3px 10px 3px 10px;/* THIRD number must change with respect to padding-top (X) below */
+		
+		padding: 3px 4px; /* set padding (tab size) as desired; FIRST number must change with respect to padding-top (X) above */
+		border: 1px solid #000000; /* set border COLOR as desired; usually matches border color specified in #tabnav */
+		background-color: #3d0165; /* set unselected tab background color as desired */
+		color: #666; /* set unselected tab link color as desired */
+		margin-right: 0px; /* set additional spacing between tabs as desired */
+		text-decoration: none;
+		border-bottom: none;
+	
+	}
+
+	ul#tabnav { /* general settings */
+		text-align: center; /* set to left, right or center */
+		margin: 1em 0 1em 0; /* set margins as desired */
+		font: bold 11px verdana, arial, sans-serif; /* set font as desired */
+		border-bottom: 1px solid #0B243B; /* set border COLOR as desired */
+		list-style-type: none;
+		padding: 3px 10px 3px 10px;/* THIRD number must change with respect to padding-top (X) below */
+		}
+
+		ul#tabnav li { /* do not change */
+		display: inline;
+		}
+
+
+		body#tab1 li.tab1 a, body#tab2 li.tab2 a, body#tab3 li.tab3 a, body#tab4 li.tab4 a { /* settings for selected tab link */
+		background-color: #fff; /* set selected tab background color as desired */
+		color: #E2E2E2; /* set selected tab link color as desired */
+		position: relative;
+		top: 1px;
+		padding-top: 4px; /* must change with respect to padding (X) above and below ;*/
+		}
+		
+		body#tab1_sel li.tab1_sel a, body#tab2_sel li.tab2_sel a, body#tab3_sel li.tab3_sel a, body#tab4_sel li.tab4_sel a { /* settings for selected tab link */
+		background-color: #0B243B; /* set selected tab background color as desired */
+		color: #E2E2E2; /* set selected tab link color as desired */
+		position: relative;
+		top: 1px;
+		padding-top: 4px; /* must change with respect to padding (X) above and below ;*/
+		}
+
+		ul#tabnav li a { /* settings for all tab links */
+		padding: 3px 4px; /* set padding (tab size) as desired; FIRST number must change with respect to padding-top (X) above */
+		border: 1px solid #000000; /* set border COLOR as desired; usually matches border color specified in #tabnav */
+		background-color: #3d0165; /* set unselected tab background color as desired */
+		color: #666; /* set unselected tab link color as desired */
+		margin-right: 0px; /* set additional spacing between tabs as desired */
+		text-decoration: none;
+		border-bottom: none;
+		}
+
+		ul#tabnav a:hover { /* settings for hover effect */
+		background: #0B243B; /* set desired hover color */
+		}
+		
+		.radialSquare, .radialLevel1
+{
+position:absolute;
+height:60px;
+width:60px;
+border:solid 1px #B4B4B4;
+
+filter:alpha(opacity=98);
+-moz-opacity:0.98;
+-khtml-opacity: 0.98;
+opacity: 0.98;
+}
+.radialLevel1
+{
+background-color:#E2E2E2; 
+border:solid 1px #B4B4B4;
+filter:alpha(opacity=75);
+
+-moz-opacity:0.75;
+-khtml-opacity: 0.75;
+opacity: 0.75;
+}
+.radialLevel2
+{
+position:absolute;
+background-color: #6d5877; 
+border:solid 1px #B4B4B4;
+font-weight: bold;
+font-size: 12px;
+color: #fff;
+
+filter:alpha(opacity=99);
+-moz-opacity:0.99;
+-khtml-opacity: 0.99;
+opacity: 0.99;
+}

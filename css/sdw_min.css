@@ -1,0 +1,538 @@
+/**
+	Links that resemble buttons when hovered.
+	Nomally used with sorrounding them with spaces
+	and appending a &raquo; symbol:
+
+		<a>&nbsp;TEXT&nbsp;&raquo;&nbsp;</a>
+													**/
+
+													
+.highlight {
+	background-color: yellow
+}
+
+}
+table.naked {
+	border-width: 0px;
+	border-spacing: ;
+	border-style: outset;
+	border-color: gray;
+	border-collapse: separate;
+	background-color: white;
+}
+
+table.naked th {
+	border-width: 0px;
+	padding: 0px;
+	border-style: inset;
+	border-color: gray;
+	background-color: white;
+	-moz-border-radius: ;
+}
+
+table.naked td {
+	border-width: 0px;
+	padding: 0px;
+	border-style: inset;
+	border-color: gray;
+	background-color: white;
+	-moz-border-radius: ;
+}
+
+table.oneLineHeader {
+	border-width: 0px 0px 0px 0px;
+	border-spacing: 0px;
+}
+
+table.oneLineHeader th {
+	border-width: 0px 0px 0px 0px;
+	padding: 0px 0px 0px 0px;
+	-moz-border-radius: 0px 0px 0px 0px;
+}
+
+table.oneLineHeader td {
+	border-width: 0px 0px 0px 0px;
+	padding: 0px 0px 0px 0px;
+	-moz-border-radius: 0px 0px 0px 0px;
+}
+
+form.oneLineMenu {
+	display: inline;
+}
+
+p.oneLineHeader {
+	background-color: black;
+}
+
+input.oneLineMenuSearch {
+	background: url(include/search-16x16.png) #ffffff no-repeat left center;
+	font-size: 10px;
+	background-color: #ffffff;
+	border: 1px solid #666666;
+}
+
+input.oneLineMenu {
+	font-size: 10px;
+	background-color: #ffffff;
+	border: 1px solid #666666;
+}
+
+input.oneLineMenuSubmit {
+	font-size: 10px;
+	color: #ffffff;
+	background: #2B547E;
+	border: 1px solid #ffffff;
+}
+
+a.likebutton:visited,a.likebutton:active,a.likebutton:link {
+	color: #2B3856;
+	background-color: #EEEEE4;
+	font-family: arial, helvetica, sans-serif;
+	font-size: 10pt;
+	text-decoration: none;
+}
+
+a.likebutton:hover {
+	cursor: hand;
+	color: #fbe249;
+	background-color: #2B3856;
+	font-family: arial, helvetica, sans-serif;
+	font-size: 10pt;
+	text-decoration: none;
+}
+
+/**
+	Links that resemble buttons always, not only when hovered.
+	Nomally used with sorrounding them with spaces
+	and appending a &raquo; symbol:
+
+		<a>&nbsp;TEXT&nbsp;&raquo;&nbsp;</a>
+													**/
+a.button:visited,a.button:active,a.button:link {
+	color: #FFFFFF;
+	background-color: #2B3856;
+	font-family: arial, helvetica, sans-serif;
+	font-size: 10pt;
+	text-decoration: none;
+}
+
+a.button:hover {
+	cursor: default;
+	color: #fbe249;
+	background-color: #2B3856;
+	font-family: arial, helvetica, sans-serif;
+	font-size: 10pt;
+	text-decoration: none;
+}
+
+select.normal {
+	font-size: 10pt;
+	width: 200px;
+	height: auto;
+}
+
+input.button {
+	cursor: hand;
+	font-family: verdana;
+	font-weight: bold;
+	font-size: 9pt;
+	background: #2B3856;
+	color: #fff;
+	text-align: left;
+	padding: 0px;
+	margin: 0px;
+	border: 0px;
+	height: auto;
+	padding-top: 0px;
+	none
+	#000
+}
+
+input.normal {
+	font-size: 10pt;
+	width: 200px;
+	height: auto;
+}
+
+input.accession {
+	font-size: 10pt;
+	width: 150px;
+	height: auto;
+	background: #FFF0D0;
+}
+
+input.login {
+	font-size: 9pt;
+	height: auto;
+	width: 100px;
+}
+
+/**
+ *  Slight redefinition of one of the EBI styles
+ */
+.tabletop {
+	background-color: #EEEEE4
+}
+
+/**
+ *  Styles for the matrix calculation progress bar
+ */
+div#progress_all {
+	position: relative;
+	background: #FF5544;
+	font-size: 0px;
+	height: 8px;
+	top: 0px;
+	left: 0px;
+	width: 470px;
+	border-style: solid;
+	border-color: #2B3856;
+	border-width: 1px 1px 1px 1px;
+}
+
+div#progress_done {
+	position: relative;
+	background: #2B3856;
+	font-size: 0px;
+	height: 8px;
+	top: 0px;
+	left: 0px;
+}
+
+* {
+	-moz-box-sizing: border-box;
+}
+
+html,body {
+	position: relative;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+h1 {
+	font-weight: bold;
+	font-size: 18px;
+	border-bottom: 1px solid #b9cfd8;
+}
+
+a.sectionTitle {
+	font-weight: bold;
+	font-size: 16px;
+	font-color: white;
+	color: white;
+}
+
+.cleanlink a {
+	color: #eeeeee;
+	text-decoration: none;
+}
+
+.cleanlink a:hover {
+	color: #4f91bb;
+	text-decoration: underline;
+}
+
+a {
+	color: #4f91bb;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #829fb5;
+	text-decoration: underline;
+}
+
+#head {
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	width: 960px;
+	height: 30px;
+}
+
+#menu {
+	position: absolute;
+	top: 60px;
+	left: 10px;
+	width: 150px;
+}
+
+#main {
+	position: absolute;
+	top: 60px;
+	left: 170px;
+	width: 800px;
+	height: 600px;
+}
+
+.link {
+	color: #4f91bb;
+	cursor: pointer;
+	cursor: hand;
+}
+
+.link-hov {
+	color: #829fb5;
+	text-decoration: underline;
+}
+
+/* DEFAULT SKIN STYLING */
+body,td,th,input {
+	font-size: 14px;
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	color: #2E2E2E;
+}
+
+h1 {
+	COLOR: #000000;
+	FONT-FAMILY: Arial, Helvetica, sans-serif;
+	FONT-SIZE: 13pt;
+	FONT-WEIGHT: bold
+}
+
+h2 {
+	COLOR: #000000;
+	FONT-FAMILY: Arial, Helvetica, sans-serif;
+	FONT-SIZE: 12pt;
+	FONT-WEIGHT: bold
+}
+
+h3 {
+	COLOR: #000000;
+	FONT-FAMILY: Arial, Helvetica, sans-serif;
+	FONT-SIZE: 11pt;
+	FONT-WEIGHT: normal
+}
+
+h4 {
+	COLOR: #000000;
+	FONT-FAMILY: Arial, Helvetica, sans-serif;
+	FONT-SIZE: 10pt;
+	FONT-WEIGHT: normal
+}
+
+h5 {
+	COLOR: #000000;
+	FONT-FAMILY: Arial, Helvetica, sans-serif;
+	FONT-SIZE: 10pt;
+	FONT-WEIGHT: normal
+}
+
+h6 {
+	COLOR: #000000;
+	FONT-FAMILY: Arial, Helvetica, sans-serif;
+	FONT-SIZE: 10pt;
+	FONT-WEIGHT: normal
+}
+
+input.buttongreen {
+	cursor: hand;
+	font-family: verdana;
+	font-weight: bold;
+	font-size: 9pt;
+	background: #2B3856;
+	color: #fff;
+	text-align: left;
+	padding: 0px;
+	margin: 0px;
+	border: 0px;
+	height: auto;
+	padding-top: 0px;
+	none
+	#000
+}
+
+input.normal {
+	font-size: 10pt;
+	width: 200px;
+	height: auto;
+}
+
+input.accession {
+	font-size: 10pt;
+	width: 150px;
+	height: auto;
+	background: #FFF0D0;
+}
+
+input.login {
+	font-size: 9pt;
+	height: auto;
+	width: 100px;
+}
+
+select.normal {
+	font-size: 10pt;
+	width: 200px;
+	height: auto;
+}
+
+#button {
+	width: 12em;
+	border-right: 1px solid #000;
+	padding: 0 0 1em 0;
+	margin-bottom: 1em;
+	font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Lucida, Geneva,
+		Helvetica, Arial, sans-serif;
+	background-color: #90bade;
+	color: #333;
+}
+
+#button ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	border: none;
+}
+
+#button li {
+	border-bottom: 1px solid #90bade;
+	margin: 0;
+	text-align: left;
+}
+
+#button li a {
+	display: block;
+	padding: 5px 5px 5px 0.5em;
+	border-left: 10px solid #E41B17;
+	border-right: 10px solid #508fc4;
+	background-color: #2B3856;
+	color: #fff;
+	text-decoration: none;
+	width: 100%;
+}
+
+#button li a:hover {
+	border-left: 10px solid #1c64d1;
+	border-right: 10px solid #5ba3e0;
+	background-color: #2586d7;
+	color: #fff;
+}
+
+td.red {
+	background-color: #FF0000;
+	color: #000;
+	padding: 4px;
+	text-align: left;
+	border-bottom: 2px #fff solid;
+}
+
+td.orange {
+	background-color: #F87431;
+	color: #000;
+	padding: 4px;
+	text-align: left;
+	border-bottom: 2px #fff solid;
+}
+
+td.yellow {
+	background-color: #FFFF00;
+	color: #000;
+	padding: 4px;
+	text-align: left;
+	border-bottom: 2px #fff solid;
+}
+
+td.green {
+	background-color: #4CC417;
+	color: #000;
+	padding: 4px;
+	text-align: left;
+	border-bottom: 2px #fff solid;
+}
+
+address:after { /* \40 is a character entity for the '@' symbol */
+	content: "E-mail: Hugo.Berube\40nrc-cnrc.gc.ca";
+}
+
+.blur {
+	width: 1000px;
+	background-color: #ccc; /*shadow color*/
+	color: inherit;
+	margin-left: 4px;
+	margin-top: 4px;
+}
+
+.shadow,.content {
+	width: 1000px;
+	position: relative;
+	bottom: 2px;
+	right: 2px;
+}
+
+.shadow {
+	width: 1000px;
+	background-color: #666; /*shadow color*/
+	color: inherit;
+}
+
+.content {
+	width: 1000px;
+	background-color: #fff; /*background color of content*/
+	color: #000; /*text color of content*/
+	border: 1px solid #000; /*border color*/
+	padding: .5em 2ex;
+}
+
+#jsddm
+{	margin: 0;
+	padding: 0}
+	
+	#jsddm li
+	{	float: left;
+		list-style: none;
+		font: 12px Tahoma, Arial}
+
+	#jsddm li a
+	{	display: block;
+		background: #20548E;
+		padding: 5px 12px;
+		text-decoration: black;
+		border-right: 1px solid white;
+		width: 150px;
+		color: #EAFFED;
+		white-space: nowrap}
+
+	#jsddm li a:hover
+	{	background: #1A4473}
+		
+		#jsddm li ul
+		{	margin: 0;
+			padding: 0;
+			position: absolute;
+			visibility: hidden;
+			border-top: 1px solid white}
+		
+		#jsddm li ul li
+		{	float: none;
+			display: inline}
+		
+		#jsddm li ul li a
+		{	width: auto;
+			background: #2B547E} /*F0F0F0 9F1B1B*/
+		
+		#jsddm li ul li a:hover
+		{	background: #0B243B} /*7F1616  0B243B */
+
+		
+
+div.popup a:hover { background-color: #faa; }
+div.menu:hover div:first-child { border-bottom: none; }
+div.menu div.popup { display: none; }
+div.menu:hover div.popup { 
+    display: block; 
+    background-color: #99f; 
+}
+
+
+div.menu div {
+    width: 175px;
+    background-color: #66f;
+    padding: 5px;
+    border: solid 2px blue;
+}
+
+
+div.popup div, div.popup a { display:block; text-decoration: none; margin: 2px 2px 2px 5px; }
+div.popup div + div, div.popup a + a { margin-top: 10px; } 

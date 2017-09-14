@@ -1,0 +1,661 @@
+<div yw-active-menu="Live"
+     yw-active-title="Live Stats">
+    <script>
+
+        var leaderD3;
+        var xScale;
+        var yScale;
+        var svg;
+        var w = 500;
+        var h = 125;
+        var padding = 20;
+        var ticksNbr = 5;
+        var topPoolersToShow = 5;
+        var leadersDataset = [];
+
+        //Define key function, to be used when binding data
+        var key = function(d) {
+            return d.key;
+        };
+
+        d3.json("json/live.poolers.json", function (data){
+
+            leaderD3 = data.teams.slice(0,topPoolersToShow);
+
+
+
+            for (i = 0; i < leaderD3.length; i++) {
+
+                console.log(leaderD3.name);
+               // var myKey = {};
+              //  myKey['key'] = leaderD3.name;
+
+                var myObj = {};
+                myObj['value'] = leaderD3[i];
+                myObj['key'] = leaderD3[i].name;
+
+
+
+                leadersDataset[i] = myObj;
+
+            }
+
+
+            xScale = d3.scale.linear()
+                .domain([0, data.topTotalScore])
+                .range([0, w]);
+
+            yScale = d3.scale.ordinal()
+                .domain(d3.range(topPoolersToShow))
+                .rangeRoundBands([padding,h-padding], 0.1);
+
+
+
+            svg = d3.select(".chart")
+                .append("svg")
+                .attr("width", w)
+                .attr("height", h);
+
+            var xAxis = d3.svg.axis()
+                .scale(xScale)
+                .orient("bottom")
+                .ticks(ticksNbr);
+
+            //svg.selectAll("rect").remove();
+
+            svg.selectAll("line")
+                .data(xScale.ticks(20))
+                .enter().append("svg:line")
+                .attr("x1", xScale)
+                .attr("x2", xScale)
+                .attr("y1", padding)
+                .attr("y2", h-padding)
+                .attr("stroke", "#ccc");
+
+            //Create bars
+            svg.selectAll("rect")
+                //.data(leaderD3)
+                .data(leadersDataset, key)
+                .enter()
+                .append("rect")
+                .attr("x", function(d, i) {
+                    0;
+                })
+                .attr("y", function(d,i) {
+                    console.log('yScale('+i+')='+yScale(i));
+                    return yScale(i);
+                })
+                .attr("width", function(d) { return xScale(d.value.points) + "px"; })
+                .style("height", yScale.rangeBand())
+                .attr("fill", function(d) {
+                    return "#337ab7";
+                })
+                .on("mouseover", function(d) {
+
+                    //Get this bar's x/y values, then augment for the tooltip
+                    var xPosition = 150;//w-(parseFloat(d3.select(this).attr("x")) + xScale(d.points));
+                    var yPosition = parseFloat(d3.select(this).attr("y")) / 2 + h / 2;
+
+                    //Update the tooltip position and value
+                    d3.select("#tooltip")
+                        .style("left", xPosition + "px")
+                        .style("top", yPosition + "px")
+                        .select("#team")
+                        .text(d.value.name);
+
+                    d3.select("#goals")
+                        .text(+d.value.goals);
+                    d3.select("#passes")
+                        .text(d.value.passes);
+                    d3.select("#wins")
+                        .text(d.value.wins);
+                    d3.select("#shutouts")
+                        .text(d.value.shutOuts);
+                    d3.select("#points")
+                        .text(d.value.points);
+
+                    //Show the tooltip
+                    d3.select("#tooltip").classed("hidden", false);
+                    d3.select(this)
+                        .attr("fill", "orange");
+
+                })
+                .on("mouseout", function() {
+
+                    //Hide the tooltip
+                    d3.select("#tooltip").classed("hidden", true);
+                    d3.select(this)
+                        .transition()
+                        .duration(250)
+                        .attr("fill", "#337ab7");
+
+                });
+
+
+            //Create labels
+
+            svg.selectAll("text")
+                .data(leadersDataset, key)
+                .enter()
+                .append("text")
+                .text(function(d) {
+                    return d.value.name + "       " + d.value.points + " pts";
+                })
+                .attr("text-anchor", "middle")
+                .attr("x", function(d, i) {
+                    return 100;
+                })
+                .attr("y", function(d,i) {
+                    return yScale(i)+10;
+                })
+                .attr("font-family", "sans-serif")
+                .attr("font-size", "11px")
+                .attr("fill", "lightgrey");
+
+
+            svg.append("svg:line")
+                 .attr("y1", padding)
+                 .attr("y2", h-padding)
+                 .attr("stroke", "#000");
+
+            svg.append("g")
+                .attr("class", "x axis")
+                .attr("transform", "translate(0,"+(h-20)+")")
+                .call(xAxis)
+                //.selectAll("text")
+                .style("text-anchor", "end")
+                .attr("dx", "-.8em")
+                .attr("dy", "-.55em")
+                ;
+
+
+        });
+
+        function refreshGraph() {
+
+            //console.log("refreshing...");
+
+            d3.json("json/live.poolers.json", function (data) {
+
+                    //console.log("reading json...")
+
+                    leaderD3 = data.teams.slice(0,topPoolersToShow);
+                    console.log(leaderD3);
+
+                    for (i = 0; i < leaderD3.length; i++) {
+
+                        console.log(leaderD3.name);
+                        // var myKey = {};
+                        //  myKey['key'] = leaderD3.name;
+
+                        var myObj = {};
+                        myObj['value'] = leaderD3[i];
+                        myObj['key'] = leaderD3[i].name;
+
+
+
+                        leadersDataset[i] = myObj;
+
+                    }
+
+                    xScale = d3.scale.linear()
+                        .domain([0, data.topTotalScore])
+                        .range([0, w]);
+
+                    yScale = d3.scale.ordinal()
+                        .domain(d3.range(topPoolersToShow))
+                        .rangeRoundBands([padding,h-padding], 0.1);
+
+                    var xAxis = d3.svg.axis()
+                        .scale(xScale)
+                        .orient("bottom")
+                        .ticks(ticksNbr);
+
+                    svg.selectAll("rect").remove();
+                    svg.selectAll(".x.axis").remove();
+                    svg.selectAll("text").remove();
+                    svg.selectAll("line").remove();
+
+                    var bars = svg.selectAll("rect")			//Select all bars
+                        .data(leadersDataset, key);
+
+                    svg.selectAll("line")
+                        .data(xScale.ticks(20))
+                        .enter().append("svg:line")
+                        .attr("x1", xScale)
+                        .attr("x2", xScale)
+                        .attr("y1", padding)
+                        .attr("y2", h-padding)
+                        .attr("stroke", "#ccc");
+
+                    //Enter…
+                    bars.enter()								//References the enter selection (a subset of the update selection)
+                        .append("rect")							//Creates a new rect
+                        .attr("x", function(d, i) {
+                            0;
+                        })
+                        .attr("y", function(d,i) {
+                            console.log('yScale('+i+')='+yScale(i));
+                            return yScale(i);
+                        })
+                        .attr("width", function(d) { return xScale(d.value.points) + "px"; })
+                        .style("height", yScale.rangeBand())
+                        .attr("fill", function(d) {
+                            return "#337ab7";
+                        });
+
+                    //Update…
+                    bars.transition()							//Initiate a transition on all elements in the update selection (all rects)
+                        .duration(500)
+                        .attr("x", function(d, i) {
+                            0;
+                        })
+                        .attr("y", function(d,i) {
+                            console.log('yScale('+i+')='+yScale(i));
+                            return yScale(i);
+                        })
+                        .attr("width", function(d) { return xScale(d.value.points) + "px"; })
+                        .style("height", yScale.rangeBand())
+                        .attr("fill", function(d) {
+                            return "#337ab7";
+                        });
+
+                    //Create labels
+
+                    var teamLabels = svg.selectAll("text").data(leadersDataset, key);
+
+                    //Enter…
+                    teamLabels.enter()
+                        .append("text")
+                        .text(function(d) {
+                            return d.value.name + "       " + d.value.points + " pts";
+                        })
+                        .attr("text-anchor", "middle")
+                        .attr("x", function(d, i) {
+                            return 100;
+                        })
+                        .attr("y", function(d,i) {
+                            return yScale(i)+10;
+                        })
+                        .attr("font-family", "sans-serif")
+                        .attr("font-size", "11px")
+                        .attr("fill", "lightgrey");
+
+                    //Update…
+                    teamLabels.transition()
+                        .duration(500)
+                        .attr("x", function(d, i) {
+                            return 100;
+                        });
+
+                    //Exit…
+                    teamLabels.exit()
+                        .transition()
+                        .duration(500)
+                        .attr("x", -100)
+                        .remove();
+
+
+
+                    svg.append("g")
+                        .attr("class", "x axis")
+                        .attr("transform", "translate(0,"+(h-20)+")")
+                        .call(xAxis)
+                        //.selectAll("text")
+                        .style("text-anchor", "end")
+                        .attr("dx", "-.8em")
+                        .attr("dy", "-.55em")
+                    ;
+
+                }
+            );
+
+        }
+
+        /*function refreshGraph() {
+
+            console.log("refreshing...")
+
+            d3.json("json/live.poolers.json", function (data) {
+
+                    console.log("reading json...")
+
+                    leaderD3 = data.teams.slice(0,topPoolersToShow);
+                    console.log(leaderD3);
+
+                    xScale = d3.scale.linear()
+                        .domain([0, data.topTotalScore])
+                        .range([0, w]);
+
+                    yScale = d3.scale.ordinal()
+                        .domain(d3.range(topPoolersToShow))
+                        .rangeRoundBands([padding,h-padding], 0.1);
+
+                    var xAxis = d3.svg.axis()
+                        .scale(xScale)
+                        .orient("bottom")
+                        .ticks(ticksNbr);
+
+
+                    var bars = svg.selectAll("rect")			//Select all bars
+                    .data(leaderD3);
+
+                    var teamLabels = svg.selectAll("text").data(leaderD3);
+
+                //Enter…
+                bars.enter()								//References the enter selection (a subset of the update selection)
+                    .append("rect")							//Creates a new rect
+                    .attr("x", function(d, i) {
+                        0;
+                    })
+                    .attr("y", function(d,i) {
+                        console.log('yScale('+i+')='+yScale(i));
+                        return yScale(i);
+                    })
+                    .attr("width", function(d) { return xScale(d.points) + "px"; })
+                    .style("height", yScale.rangeBand())
+                    .attr("fill", function(d) {
+                        return "#337ab7";
+                    });
+
+                //Update…
+                bars.transition()							//Initiate a transition on all elements in the update selection (all rects)
+                    .duration(500)
+                    .attr("x", function(d, i) {
+                        0;
+                    })
+                    .attr("y", function(d,i) {
+                        console.log('yScale('+i+')='+yScale(i));
+                        return yScale(i);
+                    })
+                    .attr("width", function(d) { return xScale(d.points) + "px"; })
+                    .style("height", yScale.rangeBand())
+                    .attr("fill", function(d) {
+                        return "#337ab7";
+                    });
+
+                    //Create labels
+
+                    teamLabels.selectAll("text")
+                        .transition()
+                        .delay(function(d, i) {
+                            return i / leaderD3.length * 1000;
+                        })
+                        .duration(500)
+                        .text(function(d) {
+                            return d.name + "       " + d.points + " pts";
+                        })
+                        .attr("text-anchor", "middle")
+                        .attr("x", function(d, i) {
+                            return 100;
+                        })
+                        .attr("y", function(d,i) {
+                            return yScale(i)+10;
+                        })
+                        .attr("font-family", "sans-serif")
+                        .attr("font-size", "11px")
+                        .attr("fill", "lightgrey");
+
+                    svg.select(".x.axis")
+                        .transition()
+                        .duration(1000)
+                        .call(xAxis);
+                    ;
+
+            }
+            );*/
+
+/*            d3.json("json/live.poolers.json", function (data) {
+
+                leaderD3 = data.teams.slice(0,topPoolersToShow);
+
+                xScale = d3.scale.linear()
+                    .domain([0, data.topTotalScore])
+                    .range([0, w]);
+
+                yScale = d3.scale.ordinal()
+                    .domain(d3.range(topPoolersToShow))
+                    .rangeRoundBands([padding,h-padding], 0.1);
+
+                var xAxis = d3.svg.axis()
+                    .scale(xScale)
+                    .orient("bottom")
+                    .ticks(ticksNbr);
+
+                leaderD3 = data.teams.slice(0, topPoolersToShow);
+
+                //Create bars
+                svg.selectAll("rect")
+                    .data(leaderD3)
+                    .transition()
+                    .delay(function(d, i) {
+                        return i / leaderD3.length * 1000;
+                    })
+                    .duration(500)
+                    .attr("x", function(d, i) {
+                        0;
+                    })
+                    .attr("y", function(d,i) {
+                        console.log('yScale('+i+')='+yScale(i));
+                        return yScale(i);
+                    })
+                    .attr("width", function(d) { return xScale(d.points) + "px"; })
+                    .style("height", yScale.rangeBand())
+                    .attr("fill", function(d) {
+                        return "#337ab7";
+                    });
+
+
+                //Create labels
+
+                svg.selectAll("text")
+                    .data(leaderD3)
+                    .transition()
+                    .delay(function(d, i) {
+                        return i / leaderD3.length * 1000;
+                    })
+                    .duration(500)
+                    .text(function(d) {
+                        return d.name + "       " + d.points + " pts";
+                    })
+                    .attr("text-anchor", "middle")
+                    .attr("x", function(d, i) {
+                        return 100;
+                    })
+                    .attr("y", function(d,i) {
+                        return yScale(i)+10;
+                    })
+                    .attr("font-family", "sans-serif")
+                    .attr("font-size", "11px")
+                    .attr("fill", "lightgrey");
+
+                svg.select(".x.axis")
+                    .transition()
+                    .duration(1000)
+                    .call(xAxis);
+                ;
+
+
+            });*/
+
+
+
+
+
+
+
+
+
+    </script>
+    <div id="fb-root"></div>
+	    <script>(function(d, s, id) {
+	        var js, fjs = d.getElementsByTagName(s)[0];
+	        if (d.getElementById(id)) return;
+	        js = d.createElement(s); js.id = id;
+	        js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5";
+	        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+
+    <div id="tooltip" class="hidden">
+        <p><strong><span id="team">100</span></strong></p>
+        <p><strong>B: </strong><span id="goals">100</span></p>
+        <p><strong>P: </strong><span id="passes">100</span></p>
+        <p><strong>W: </strong><span id="wins">100</span></p>
+        <p><strong>SO: </strong><span id="shutouts">100</span></p>
+        <p><strong>Pts: </strong><span id="points">100</span></p>
+    </div>
+    <table style="width: 100%" ng-cloak>
+        <!--<tr ><td colspan ="7"> <a class="chartToggleFont" ng-click="toggleChart($event)">Top 5 Chart: [+/-]</a><div ng-show="chartVisible" class="chart"></div></td></tr>-->
+        <!--<tr><td colspan ="7"><div class="chart"></div></td></tr>-->
+
+        <tr><td colspan ="7" class="searchTitle">Chercher joueurs:<input class="form-control input-lg"
+                                                                         placeholder="R&eacute;sultats en temps r&eacute;el! Chercher un joueur par son nom ou votre &eacute;quipe. - Tapez ici."
+                                                                         ng-model="searchKey" value="Search team name" /></td></tr>
+        <tr ng-if="liveGames.newsUpdate.length > 0">
+            <td colspan="7">
+                <marquee class="leadersNumber" style="background-color: #FFDB58;font-size:1.05em;" behavior='scroll' direction='left'>Mise-&agrave;-jour: {{liveGames.newsUpdate}}</marquee>
+            </td></tr>
+        <tr>
+            <td valign="top" width="10%">
+                <table class="table table-hover" >
+                    <tr ng-repeat="game in liveGames.liveGames">
+                        <td align="center" class="table "><a href='{{game.gameUrl}}' target='_BLANK' style='text-decoration: none;'><center>
+                            <p ng-if="game.period == 'Final'" class="leadersNumber">Final</p>
+                            <p ng-if="game.period == 'OT'" class="invalid img-thumbnail leadersNumber">OT {{game.time}}</p>
+                            <p ng-if="game.period != 'Final' && game.period != 'OT'" class="leadersNumber"><p style="font-size:1em;">{{game.time}} {{game.period}}</p></p>
+                            <p style="font-size:1.05em;"><img src="{{game.homeLogo}}"/ style ="height: 25px;">&nbsp;{{game.homeScore}}</p>
+                            <!--{{game.homeLogo}}&nbsp;{{game.homeScore}}<br>-->
+                            <!--{{game.awayLogo}}&nbsp;{{game.awayScore}}<br>-->
+                            <p style="font-size:1.05em;"><img src="{{game.awayLogo}}"/ style ="height: 25px;">&nbsp;{{game.awayScore}}</p></center></a>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <td>&nbsp;</td>
+            <td valign="top"  width="28%">
+                <table class="table " ng-cloak>
+                    <thead>
+                    <tr><td colspan="4" class="bg-primary" style="text-align:center;">Pooleurs</td></tr>
+                    <tr class="bg-success">
+                        <th class="playerNameStatsHeader">&Eacute;quipe</th>
+                        <th class="playerNameStatsHeader">Stats</th>
+                    </tr>
+                    </thead>
+                    <tbody class="row" ng-repeat="pooler in liveTeams.teams  | filter:searchKey">
+
+                            <tr class="leadersNumber img-rounded" ng-if="pooler.points >= 0">
+                            <td class="img-rounded bg-info"><img  src="img/teamLogo/{{pooler.bigLogo}}" title="{{pooler.name}}" style="width: 100px; "><br><br>
+                                <!--<img ng-if="pooler.playForCash && pooler.hasPaid" src="img/paid.png" style ="height: 35px;" title="Pooler joue pour l'argent et a pay&eacute; son 5$.">
+                                <img ng-if="pooler.playForCash && !pooler.hasPaid" src="img/paid-bw.png" style ="height: 35px;" title="Pooler joue pour l'argent et n'a pas pay&eacute; son 5$.">
+                                <img ng-if="!pooler.playForCash" src="img/happy.png" style ="height: 35px;" title="Pooler joue pour le plaisir seulement.">-->
+								<br>
+                            </td>
+                            <td class="img-rounded ">
+                                <table>
+                                <tr>
+                                    <p ng-if="pooler.diffGoals > 0" class="invalid img-thumbnail">B: {{pooler.goals}}&nbsp;[+{{pooler.diffGoals}}]</p>
+                                    <p ng-if="pooler.diffGoals <= 0" >B: {{pooler.goals}}</p>
+                                </tr>
+                                    <tr>
+                                        <p ng-if="pooler.diffPasses > 0" class="invalid img-thumbnail">P: {{pooler.passes}}&nbsp;[+{{pooler.diffPasses}}]</p>
+                                        <p ng-if="pooler.diffPasses <= 0" >P: {{pooler.passes}}</p>
+                                    </tr>
+                                    <tr>
+                                        <p ng-if="pooler.diffWins > 0" class="invalid img-thumbnail">W: {{pooler.wins}}&nbsp;[+{{pooler.diffWins}}]</p>
+                                        <p ng-if="pooler.diffWins <= 0" >W: {{pooler.wins}}</p>
+                                    </tr>
+                                    <tr>
+                                        <p ng-if="pooler.diffShutOuts > 0" class="invalid img-thumbnail">SO: {{pooler.shutOuts}}&nbsp;[+{{pooler.diffShutOuts}}]</p>
+                                        <p ng-if="pooler.diffShutOuts <= 0" >SO: {{pooler.shutOuts}}</p>
+                                    </tr>
+                                    <tr>
+                                        <p ng-if="pooler.diffPoints > 0" class="invalid img-thumbnail">Pts: {{pooler.points}}&nbsp;[+{{pooler.diffPoints}}]</p>
+                                        <p ng-if="pooler.diffPoints <= 0" >Pts: {{pooler.points}}</p>
+                                    </tr>
+                                </table>
+                            </td>
+                            </tr>
+                        <!--</table></center>-->
+                    <!--</td>-->
+
+
+                    <!--</tr>-->
+
+                    </tbody>
+
+                </table>
+            </td>
+            <td>&nbsp;</td>
+            <td valign="top"  width="28%">
+                <table class="table " ng-cloak>
+                    <thead>
+                    <tr><td colspan="2" class="bg-warning" style="text-align:center;">Joueurs</td></tr>
+                    <tr class="bg-success">
+                        <th class="playerNameStatsHeader">Nom</th>
+                        <th class="playerNameStatsHeader">Stats</th>
+                    </tr>
+                    </thead>
+
+                    <tbody class="row" ng-repeat="skater in liveSkaters.skaters | filter:searchKey"
+                           ng-class="{oddRow: $index % 2 == 0}">
+                    <tr ng-if="$index < 50" >
+                        <td  class="bg-info playerName img-rounded"><img class="img-rounded" src="{{skater.photoId}}.jpg" style="width: 40px;"/><br>{{skater.fullName}}</td>
+                        <td class="playerNameTeamNumbers" width="70%">
+                            <p ng-if="skater.diffGoals > 0" class="invalid img-thumbnail">B: {{skater.goals}}&nbsp;[+{{skater.diffGoals}}]</p>
+                            <p ng-if="skater.diffGoals <= 0" >B: {{skater.goals}}</p>
+
+                            <p ng-if="skater.diffPasses > 0" class="invalid img-thumbnail">P: {{skater.passes}}&nbsp;[+{{skater.diffPasses}}]</p>
+                            <p ng-if="skater.diffPasses <= 0" >P: {{skater.passes}}</p>
+
+                            <p ng-if="skater.diffPoints > 0" class="invalid img-thumbnail">Pts: {{skater.points}}&nbsp;[+{{skater.diffPoints}}]</p>
+                            <p ng-if="skater.diffPoints <= 0" >Pts: {{skater.points}}</p>
+                        </td>
+
+
+                    </tr>
+
+                    </tbody>
+
+                </table>
+            </td>
+            <td>&nbsp;</td>
+            <td valign="top" width="28%">
+                <table class="table table-striped table-hover" ng-cloak>
+                    <thead>
+                    <tr><td colspan="2" class="bg-danger" style="text-align:center;">Gardiens</td></tr>
+                    <tr class="bg-success">
+                        <th class="playerNameStatsHeader">Nom</th>
+                        <th class="playerNameStatsHeader">Pts</th>
+                    </tr>
+                    </thead>
+
+                    <tbody class="row" ng-repeat="goalie in liveGoalies.goalies | filter:searchKey"
+                           ng-class="{oddRow: $index % 2 == 0}">
+                    <tr ng-if="$index < 50">
+                        <td  class="bg-info playerName img-rounded"><img class="img-rounded" src="{{goalie.photoId}}.jpg" style="width: 40px;"><br>{{goalie.fullName}}</td>
+                        <td class="playerNameTeamNumbers" width="70%">
+                            <p ng-if="goalie.diffWins > 0" class="invalid img-thumbnail">W: {{goalie.wins}}&nbsp;[+{{goalie.diffWins}}]</p>
+                            <p ng-if="goalie.diffWins <= 0" >W: {{goalie.wins}}</p>
+                               <p ng-if="goalie.diffShutOuts > 0" class="invalid img-thumbnail">SO: {{goalie.shutOuts}}&nbsp;[+{{goalie.diffShutOuts}}]</p>
+                            <p ng-if="goalie.diffShutOuts <= 0" >SO: {{goalie.shutOuts}}</p>
+                              <p ng-if="goalie.diffPoints > 0" class="invalid img-thumbnail">Pts: {{goalie.points}}&nbsp;[+{{goalie.diffPoints}}]</p>
+                            <p ng-if="goalie.diffPoints <= 0" >Pts: {{goalie.points}}</p>
+                        </td>
+
+
+                    </tr>
+
+                    </tbody>
+
+                </table>
+            </td>
+            <!--<td style="width:300px; vertical-align: text-top;" valign="top">
+
+			            <a class="twitter-timeline" data-dnt="true" href="https://twitter.com/ZombieSandbox/lists/nhl" data-widget-id="669612623588171776"></a>
+						<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+						<br><p><p class="playerNameStatsHeader" style="text-decoration: underline;">Postez vos commentaires ici:</p>
+			<div class="fb-comments" data-href="http://lepoolahugo.com" data-width="275" data-numposts="25"></div></td>-->
+        </tr>
+    </table>
+</div>
+

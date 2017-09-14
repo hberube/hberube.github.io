@@ -1,0 +1,106 @@
+<!doctype html>
+<html ng-app="main">
+<meta name='viewport' content='user-scalable=yes,width=750'>
+<head>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="favicon.ico" >
+    <link rel="icon" type="img" href="animated_favicon1.gif" >
+
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="bitly-verification" content="c6691fb67596"/>
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-68407760-1', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <!-- Place favicon.ico in the root directory -->
+
+
+    <link rel="stylesheet" href="css/main.css">
+    <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="css/poolD3.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-strap/2.1.2/angular-strap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-strap/2.1.2/angular-strap.tpl.min.js"></script>
+
+    <script src="js/jquery-2.1.4.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/d3.min.js"></script>
+    <script src="json/pool.json"></script>
+
+    <script src="js/angular.min.js"></script>
+    <script src="js/angular-route.min.js"></script>
+
+    <script src="modules/core.js"></script>
+    <script src="modules/main.js"></script>
+    <script src="modules/maintenance.js"></script>
+</head>
+<body ng-controller="adminCtrl">
+<!--[if lt IE 8]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+    your browser</a> to improve your experience.</p>
+<![endif]-->
+
+<center>
+    <div >
+        <!--<img src="img/nhl__bg_main_06.png" alt="..." class="img-rounded" style="width: auto">-->
+        <img src="img/pool-bg.png" alt="..." class="img-rounded" style="width: 875px;">
+
+
+
+        <table class="table" style="width:875px;">
+            <tr >
+                <td style="width: 20%"><a href="#/leaders">
+                    <button type="button" class="btn btn-primary" style="width: 100%">Meneurs</button>
+                </a></td>
+                <td style="width: 20%"><a href="#/stats">
+                    <button type="button" class="btn btn-success" style="width: 100%">Stats</button>
+                </a></td>
+                <td style="width: 20%"><a href="#/teams">
+                    <button type="button" class="btn btn-info" style="width: 100%">&Eacute;quipes</button>
+                </a></td>
+                <td style="width: 20%"><a href="#/injuries">
+                    <button type="button" class="btn btn-warning" style="width: 100%">Blessures</button>
+                </a></td>
+
+                <td style="width: 20%"><a href="#/live">
+                    <button type="button" class="btn btn-danger" style="width: 100%">Live</button>
+                </a></td>
+            </tr>
+        </table>
+        <!-- View content -->
+        <div class="main-content">
+            <div class="container-fluid">
+                <div class="container">
+                    <div ng-view></div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</center>
+
+
+
+</body>
+
+
+</html>

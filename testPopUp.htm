@@ -1,0 +1,55 @@
+
+<!DOCTYPE html>
+
+<html>
+
+<!--
+	This is a jQuery Tools standalone demo. Feel free to copy/paste.
+
+	http://flowplayer.org/tools/demos/
+
+	Do *not* reference CSS files and images from flowplayer.org when in production
+
+	Enjoy!
+-->
+
+<head>
+	<title>jQuery Tools standalone demo</title>
+
+	<!-- include the Tools -->
+	<script src="jquery.tools.min.js"></script>
+
+
+	<!-- standalone page styling (can be removed) -->
+	<link rel="stylesheet" type="text/css" href="http://static.flowplayer.org/tools/css/standalone.css"/>
+	<link rel="stylesheet" type="text/css" href="css/pool.css"/>
+
+
+
+
+<!-- tooltip styling -->
+
+</head>
+
+<body>
+
+
+
+<!-- use gif image for IE --><!--[if lt IE 7]><style>.tooltip {	background-image:url(/tools/img/tooltip/black_arrow.gif);}</style><![endif]-->
+
+<!-- a couple of trigger elements -->
+<div id='demo2'>u ntest<img src='images/warning.gif' title='genou - sera absent pour le match de lundi contre winnipeg'></div>
+
+
+<script>
+
+
+
+$("#demo2 img[title]").tooltip();
+</script>
+
+
+
+</body>
+
+</html>

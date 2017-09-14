@@ -1,0 +1,184 @@
+<div yw-active-menu="Teams"
+     yw-active-title="Teams">
+    <table class="table" style="width: 100%" ng-cloak>
+        <tr>
+            <td colspan="3">
+                <center>
+                    <table ng-cloak>
+                        <tr>
+                            <td class="searchTitle"><input class="form-control input-lg"
+                                                           placeholder="Chercher une &eacute;quipe par son nom ou son propri&eacute;taire. - Tapez ici."
+                                                           ng-model="searchKey" value="Search team name"
+                                                           style="width:525px;"/></td>
+                        </tr>
+                        <tr>
+                            <td style="font-size: 0.7em;">
+                                <center>&nbsp;&nbsp;&nbsp;<img src="img/thumbs-up.png" style="width: 25px;"
+                                                               title="Meilleur joueur de son groupe.">: &nbsp;Meilleur
+                                    joueur de son groupe.&nbsp;&nbsp;&nbsp;&nbsp;<img src="img/thumbs-down.png"
+                                                                                      style="width: 25px;"
+                                                                                      title="Meilleur joueur de son groupe.">:
+                                    &nbsp;Pire joueur de son groupe.
+                                </center>
+                            </td>
+                        </tr>
+                    </table>
+                </center>
+            </td>
+        </tr>
+
+
+        <tbody class="row" ng-repeat="team in teams.teams | filter:searchKey"
+               ng-class="{oddRow: $index % 2 == 0}">
+        <tr>
+            <td>
+                <center><img src="img/teamLogo/{{team.bigLogo}}" style="width: 110px;"/><br>
+
+                    <p class="bg-primary img-thumbnail" style="text-align: center">{{team.name}}</p><br><img
+                        src="img/{{team.userLogo}}" style="width: 110px;"><br>
+
+                    <p class="bg-success img-thumbnail" style="text-align: center">{{team.poolerName}}</p></center>
+            </td>
+            <td>
+                <table class="table  table-striped table-hover playerNameTeam" ng-cloak>
+
+                    <tr>
+                        <td ng-repeat="a in [0,1,2]"><p class="bg-info img-thumbnail playerNameTeamStatsHeader"
+                                                        style=" width: 100%;">
+                            <img class="img-rounded" src="{{team.forwards[a].photoId}}.jpg" style="height: 55px;">
+                            <img src="img/thumbs-up.png" ng-if="team.forwards[a].isBest" style="width: 25px;"
+                                 title="Meilleur joueur de son groupe.">
+                            <img src="img/thumbs-down.png" ng-if="team.forwards[a].isWorst" style="width: 25px;"
+                                 title="Pire joueur de son groupe.">
+                            <img ng-if="team.forwards[a].isInjured" class="img-rounded" src="img/plaster-rw.png"
+                                 style="height: 20px; cursor: pointer;"
+                                 title="{{team.forwards[a].injury}} - {{team.forwards[a].injuryDescriptions[0]}}">
+                            <br>{{team.forwards[a].fullName}} &nbsp;
+                        </p>
+                             <p class="bg-success img-thumbnail   playerNameTeamStatsHeader" style="width: 100%;">
+                                B: {{team.forwards[a].goals}}, P: {{team.forwards[a].passes}}<br>Pts:
+                                {{team.forwards[a].points}}
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td ng-repeat="a in [3,4,5]"><p class="bg-info img-thumbnail playerNameTeamStatsHeader"
+                                                        style=" width: 100%;"><img class="img-rounded"
+                                                                                   src="{{team.forwards[a].photoId}}.jpg"
+                                                                                   style="height: 55px;">&nbsp;
+                            <img src="img/thumbs-up.png" ng-if="team.forwards[a].isBest" style="width: 25px;"
+                                 title="Meilleur joueur de son groupe.">
+                            <img src="img/thumbs-down.png" ng-if="team.forwards[a].isWorst" style="width: 25px;"
+                                 title="Pire joueur de son groupe.">
+                            <img ng-if="team.forwards[a].isInjured" class="img-rounded" src="img/plaster-rw.png"
+                                 style="height: 20px; cursor: pointer;"
+                                 title="{{team.forwards[a].injury}} - {{team.forwards[a].injuryDescriptions[0]}}">
+                            <br>{{team.forwards[a].fullName}}
+                        </p>
+                            <p class="bg-success img-thumbnail   playerNameTeamStatsHeader" style="width: 100%;">&nbsp;B:
+                                {{team.forwards[a].goals}}, P: {{team.forwards[a].passes}}<br>Pts:
+                                {{team.forwards[a].points}}</p></td>
+                    </tr>
+                    <tr>
+                        <td ng-repeat="a in [6,7,8]"><p class="bg-info img-thumbnail playerNameTeamStatsHeader"
+                                                        style=" width: 100%;"><img class="img-rounded"
+                                                                                   src="{{team.forwards[a].photoId}}.jpg"
+                                                                                   style="height: 55px;">&nbsp;<img src="img/thumbs-up.png" ng-if="team.forwards[a].isBest" style="width: 25px;"
+                                                                                                                                          title="Meilleur joueur de son groupe.">
+                            <img src="img/thumbs-down.png" ng-if="team.forwards[a].isWorst" style="width: 25px;"
+                                 title="Pire joueur de son groupe.">
+                            <img ng-if="team.forwards[a].isInjured" class="img-rounded" src="img/plaster-rw.png"
+                                 style="height: 20px; cursor: pointer;"
+                                 title="{{team.forwards[a].injury}} - {{team.forwards[a].injuryDescriptions[0]}}">
+                            <br>{{team.forwards[a].fullName}} &nbsp;
+                        </p>
+
+                            <p class="bg-success img-thumbnail   playerNameTeamStatsHeader" style="width: 100%;">
+                            &nbsp;B:
+                                {{team.forwards[a].goals}}, P: {{team.forwards[a].passes}}<br>Pts:
+                                {{team.forwards[a].points}}</p></td>
+                    </tr>
+                    <tr>
+                        <td ng-repeat="a in [9,10,11]"><p class="bg-info img-thumbnail playerNameTeamStatsHeader"
+                                                          style=" width: 100%;"><img class="img-rounded"
+                                                                                     src="{{team.forwards[a].photoId}}.jpg"
+                                                                                     style="height: 55px;">&nbsp;<img src="img/thumbs-up.png" ng-if="team.forwards[a].isBest" style="width: 25px;"
+                                                                                                                                            title="Meilleur joueur de son groupe.">
+                            <img src="img/thumbs-down.png" ng-if="team.forwards[a].isWorst" style="width: 25px;"
+                                 title="Pire joueur de son groupe.">
+                            <img ng-if="team.forwards[a].isInjured" class="img-rounded" src="img/plaster-rw.png"
+                                 style="height: 20px; cursor: pointer;"
+                                 title="{{team.forwards[a].injury}} - {{team.forwards[a].injuryDescriptions[0]}}">
+                            <br>{{team.forwards[a].fullName}} &nbsp;
+                        </p>
+                            <p class="bg-success img-thumbnail  playerNameTeamStatsHeader" style="width: 100%;">&nbsp;B:
+                                {{team.forwards[a].goals}}, P: {{team.forwards[a].passes}}<br>Pts:
+                                {{team.forwards[a].points}}</p></td>
+                    </tr>
+                    <tr>
+                        <td ng-repeat="a in [12,13,14]"><p class="bg-info img-thumbnail playerNameTeamStatsHeader"
+                                                           style=" width: 100%;"><img class="img-rounded"
+                                                                                      src="{{team.forwards[a].photoId}}.jpg"
+                                                                                      style="height: 55px;">&nbsp;<img src="img/thumbs-up.png" ng-if="team.forwards[a].isBest" style="width: 25px;"
+                                                                                                                                             title="Meilleur joueur de son groupe.">
+                            <img src="img/thumbs-down.png" ng-if="team.forwards[a].isWorst" style="width: 25px;"
+                                 title="Pire joueur de son groupe.">
+                            <img ng-if="team.forwards[a].isInjured" class="img-rounded" src="img/plaster-rw.png"
+                                 style="height: 20px; cursor: pointer;"
+                                 title="{{team.forwards[a].injury}} - {{team.forwards[a].injuryDescriptions[0]}}">
+                            <br>{{team.forwards[a].fullName}} &nbsp;
+                        </p>
+
+                            <p class="bg-success img-thumbnail  playerNameTeamStatsHeader" style="width: 100%;">&nbsp;B:
+                                {{team.forwards[a].goals}}, P: {{team.forwards[a].passes}}<br>Pts:
+                                {{team.forwards[a].points}}</p></td>
+                    </tr>
+                    <tr>
+                        <td ng-repeat="a in [15,16,17]"><p class="bg-warning img-thumbnail playerNameTeamStatsHeader"
+                                                           style=" width: 100%;">&nbsp;<img class="img-rounded"
+                                                                                      src="{{team.forwards[a].photoId}}.jpg"
+                                                                                      style="height: 55px;">&nbsp;<img src="img/thumbs-up.png" ng-if="team.forwards[a].isBest" style="width: 25px;"
+                                                                                                                                             title="Meilleur joueur de son groupe.">
+                            <img src="img/thumbs-down.png" ng-if="team.forwards[a].isWorst" style="width: 25px;"
+                                 title="Pire joueur de son groupe.">
+                            <img ng-if="team.forwards[a].isInjured" class="img-rounded" src="img/plaster-rw.png"
+                                 style="height: 20px; cursor: pointer;"
+                                 title="{{team.forwards[a].injury}} - {{team.forwards[a].injuryDescriptions[0]}}">
+                            <br>{{team.forwards[a].fullName}} &nbsp;
+                        </p>
+
+                            <p class="bg-success img-thumbnail  playerNameTeamStatsHeader" style="width: 100%;">&nbsp;B:
+                                {{team.forwards[a].goals}}, P: {{team.forwards[a].passes}}<br>Pts:
+                                {{team.forwards[a].points}}</p></td>
+                    </tr>
+                    <tr>
+                        <td ng-repeat="a in [0,1,2]"><p class="bg-danger img-thumbnail playerNameTeamStatsHeader"
+                                                        style=" width: 100%;"><img class="img-rounded"
+                                                                                   src="{{team.goalies[a].photoId}}.jpg"
+                                                                                   style="height: 55px;">&nbsp;<img src="img/thumbs-up.png" ng-if="team.forwards[a].isBest" style="width: 25px;"
+                                                                                                                                          title="Meilleur joueur de son groupe.">
+                            <img src="img/thumbs-down.png" ng-if="team.goalies[a].isWorst" style="width: 25px;"
+                                 title="Pire joueur de son groupe.">
+                            <img ng-if="team.goalies[a].isInjured" class="img-rounded" src="img/plaster-rw.png"
+                                 style="height: 20px; cursor: pointer;"
+                                 title="{{team.goalies[a].injury}} - {{team.goalies[a].injuryDescriptions[0]}}">
+                            <br>{{team.goalies[a].fullName}} &nbsp;
+                        </p>
+
+                            <p class="bg-success img-thumbnail  playerNameTeamStatsHeader" style="width: 100%;">&nbsp;W:
+                                {{team.goalies[a].wins}}, SO: {{team.goalies[a].shutOuts}}<br>Pts:
+                                {{team.goalies[a].points}}</p></td>
+                    </tr>
+
+                </table>
+
+
+            </td>
+
+
+        </tr>
+
+        </tbody>
+
+    </table>
+</div>

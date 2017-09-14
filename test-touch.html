@@ -1,0 +1,650 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title>
+
+      jQuery.flickable - Demo
+
+  </title>
+  <link href="http://lagoscript.org/stylesheets/blueprint/screen.css?1361805724" media="screen, projection" rel="stylesheet" type="text/css" />
+  <link href="http://lagoscript.org/stylesheets/blueprint/print.css?1361805724" media="print" rel="stylesheet" type="text/css" />
+  <!--[if lt IE 8]><link href="http://lagoscript.org/http://lagoscript.org//stylesheets/blueprint/ie.css?1361805724" media="screen, projection" rel="stylesheet" type="text/css" /><![endif]-->
+  <link href="http://lagoscript.org/stylesheets/style.css?1361805724" media="screen" rel="stylesheet" type="text/css" />
+
+ <style>
+   body {
+     -webkit-text-size-adjust: none;
+   }
+  </style>
+  <script src="http://lagoscript.org/javascripts/jquery-1.4.2.min.js?1361805724" type="text/javascript"></script>
+  <script src="http://lagoscript.org/javascripts/view_source.js?1361805724" type="text/javascript"></script>
+  <script src="http://lagoscript.org/javascripts/jquery.flickable.js?1361805724" type="text/javascript"></script>
+
+</head>
+<body>
+  <div class="container">
+    <div id="header">
+
+      <div class="span-18 last">
+        <h1>jQuery.flickable</h1>
+        <h3 class="alt">iPhone and Android like flick scrolling plugin</h3>
+      </div>
+      <ul class="nav">
+        <li class="column span-3 border"><a href="http://lagoscript.org/http://lagoscript.org//">projects</a></li>
+
+        <li class="column span-3 last"><a href="http://lagoscript.org/http://lagoscript.org//home/about">about</a></li>
+      </ul>
+      <hr class="space"/>
+      <ul class="tabs">
+        <li class="column span-4"><a href="http://lagoscript.org/http://lagoscript.org//jquery/flickable">project home</a></li>
+        <li class="column span-4"><a href="http://lagoscript.org/http://lagoscript.org//jquery/flickable/demo" class="active">demo</a></li>
+        <li class="column span-4"><a href="http://lagoscript.org//jquery/flickable/documentation">documentation</a></li>
+        <li class="column span-4 last"><a href="http://lagoscript.org//jquery/flickable/download">download</a></li>
+      </ul>
+    </div>
+    <hr class="space"/>
+
+
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-7481857249150769";
+/* lagoscript */
+google_ad_slot = "1540615995";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+
+
+    <div id="contents" class="span-24 last">
+
+
+<hr class="space"/>
+
+<h2>Examples</h2>
+<p>Note: ???????????iPhone?Android??????????????</p>
+<hr class="space"/>
+
+<div class="demo">
+
+  <h3>Default</h3>
+  <p>???????????????????????????????????????????????????????????????</p>
+  <p><a href="http://lagoscript.org/#" class="view_source">?????? / View Source</a></p>
+  <pre class="demo_source"><code></code></pre>
+
+  <div class="demo_frame">
+    <style type="text/css">
+      #flickable1 {
+        border: 1px solid #CCC;
+        width: 480px;
+        height: 155px;
+        overflow: auto;
+      }
+      #flickable1 ul {
+        list-style: none;
+        width:854px;
+        margin: 0;
+        padding: 5px;
+      }
+      #flickable1 ul li {
+        background-color: #EEE;
+        border: 1px solid #CCC;
+        height: 100px;
+        width: 100px;
+        margin: 5px;
+        padding: 5px;
+        float: left;
+      }
+      #flickable1 .ui-flickable-container {
+        cursor: pointer;
+      }
+    </style>
+
+    <script type="text/javascript">
+      $(function() {
+          $('#flickable1').flickable();
+      });
+    </script>
+
+    <div id="flickable1">
+      <ul>
+        <li>Content 1</li>
+        <li>Content 2</li>
+        <li>Content 3</li>
+        <li>Content 4</li>
+        <li>Content 5</li>
+        <li>Content 6</li>
+        <li>Content 7</li>
+      </ul>
+      <div style="clear:both;"></div>
+    </div>
+  </div>
+
+</div>
+
+<hr class="largespace"/>
+
+<div class="demo">
+  <h3>Section</h3>
+  <p>??????????????????????????????????iPhone??????????UI????????</p>
+  <p><a href="http://lagoscript.org/#" class="view_source">?????? / View Source</a></p>
+  <pre class="demo_source"><code></code></pre>
+
+  <div class="demo_frame">
+    <style type="text/css">
+      #flickable2 {
+        border: 1px solid #CCC;
+        width: 480px;
+        height: 170px;
+        overflow: auto;
+      }
+      #flickable2 ul {
+        list-style: none;
+        width:1425px;
+        margin: 0;
+        padding: 5px;
+      }
+      #flickable2 ul li {
+        width: 445px;
+        margin: 0;
+        padding: 10px 15px;
+        float: left;
+      }
+      #flickable2 .block {
+        color: #FFF;
+        width: 435px;
+        height: 110px;
+        padding: 5px;
+      }
+      #flickable2 h4 {
+        color: #FFF;
+      }
+      #flickable2 .ui-flickable-container {
+        cursor: pointer;
+      }
+    </style>
+
+    <script type="text/javascript">
+      $(function() {
+          $('#flickable2').flickable({
+              section: 'li'
+          });
+      });
+    </script>
+
+    <div id="flickable2">
+      <ul>
+        <li><div class="block" style="background-color:#036;"><h4>Section 1</h4><p>Aenean duis penatibus habitasse nascetur porttitor, nascetur aliquam dapibus augue vut vut, aliquet adipiscing odio? Pulvinar phasellus! Rhoncus? Et porta integer et ac ac turpis, diam nunc nunc non, tincidunt.</p></div></li>
+        <li><div class="block" style="background-color:#603;"><h4>Section 2</h4><p>Dapibus adipiscing! Vut ac mauris integer nascetur dapibus, in aliquam, quis risus elementum mus elementum cum? Porta eros nisi ut. Vut sed vel ut et a porta magna lacus turpis.</p></div></li>
+        <li><div class="block" style="background-color:#360;"><h4>Section 3</h4><p>Nisi lorem tincidunt, ultricies rhoncus purus odio lorem odio proin platea in dis odio, sed, etiam! Ridiculus, elit enim rhoncus elit augue facilisis turpis! Adipiscing sagittis? Dis ultricies. Natoque duis.</p></div></li>
+      </ul>
+      <div style="clear:both;"></div>
+    </div>
+  </div>
+
+</div>
+
+<hr class="largespace"/>
+
+<div class="demo">
+
+  <h3>Events</h3>
+  <p>????????????????????????????????on/off??????????????</p>
+  <p><a href="http://lagoscript.org/#" class="view_source">?????? / View Source</a></p>
+  <pre class="demo_source"><code></code></pre>
+
+  <div class="demo_frame">
+    <style type="text/css">
+      #flickable3 {
+        border: 1px solid #CCC;
+        width: 205px;
+        height: 345px;
+        overflow: auto;
+        float: left;
+      }
+      #flickable3 ul {
+        list-style: none;
+        margin: 0;
+        padding: 5px;
+      }
+      #flickable3 ul li {
+        margin: 0;
+        padding: 10px;
+      }
+      #flickable3 .block {
+        background-color: #EEE;
+        border: 1px solid #CCC;
+      }
+      #flickable3 .block, #flickable3 .space {
+        width: 140px;
+        height: 140px;
+        padding: 5px;
+      }
+      #flickable3 .ui-flickable-container {
+        cursor: pointer;
+      }
+      #flickable-events {
+        background-color: #EEE;
+        border: 1px solid #CCC;
+        width: 190px;
+        list-style: none;
+      }
+      #flickable-events li {
+        background-color: #FFF;
+        border: 1px solid #CCC;
+        padding: 3px;
+        margin: 5px;
+      }
+      #flickable-events .notice {
+          background:#FFF6BF;
+          color:#514721;
+          border-color:#FFD324;
+      }
+    </style>
+
+    <script type="text/javascript">
+      $(function() {
+          var events = ['dragStart', 'drag', 'dragStop', 'flick', 'scrollBack', 'change'],
+              items = {},
+              counts = {},
+              countElements = {},
+              updated;
+
+          $.each(events, function(i, name) {
+              items[name] = $('#event-' + name.toLowerCase());
+              counts[name] = 0;
+              countElements[name] = $('.count', items[name]);
+          });
+
+          function updateCounter(name) {
+              var item = items[name]
+              if (!item.hasClass('notice')) {
+                  updated && updated.removeClass('notice');
+                  item.addClass('notice');
+                  updated = item;
+              }
+              countElements[name].html(++counts[name]);
+          }
+
+          $('#flickable3').flickable({
+              section: 'li',
+              dragStart: function() {
+                  updateCounter('dragStart');
+              },
+              drag: function() {
+                  updateCounter('drag');
+              },
+              dragStop: function() {
+                  updateCounter('dragStop');
+              },
+              flick: function() {
+                  updateCounter('flick');
+              },
+              scrollBack: function() {
+                  updateCounter('scrollBack');
+              },
+              change: function() {
+                  updateCounter('change');
+              }
+          });
+
+          // Toggle section
+          var element = $('#flickable3'),
+              setButton = $('#set_section'),
+              unsetButton = $('#unset_section');
+
+          unsetButton.click(function() {
+              element.flickable('option', 'section', null);
+              $(this).attr('disabled', true);
+              setButton.attr('disabled', false);
+          });
+          setButton.click(function() {
+              element.flickable('option', 'section', 'li');
+              $(this).attr('disabled', true);
+              unsetButton.attr('disabled', false);
+          }).click();
+      });
+    </script>
+
+    <div id="flickable3">
+      <ul>
+        <li><div class="block">Content 1</div></li>
+        <li><div class="block">Content 2</div></li>
+        <li><div class="block">Content 3</div></li>
+        <li><div class="block">Content 4</div></li>
+        <li><div class="block">Content 5</div></li>
+        <li>
+          <div class="block">Content 6</div>
+          <div class="space"></div>
+        </li>
+      </ul>
+      <div style="clear:both;"></div>
+    </div>
+
+    <div style="float:left;">
+      <ul id="flickable-events">
+        <li id="event-dragstart">dragStart: <span class="count">0</span></li>
+        <li id="event-drag">drag: <span class="count">0</span></li>
+        <li id="event-dragstop">dragStop: <span class="count">0</span></li>
+        <li id="event-flick">flick: <span class="count">0</span></li>
+        <li id="event-scrollback">scrollBack: <span class="count">0</span></li>
+        <li id="event-change">change: <span class="count">0</span></li>
+      </ul>
+      <div style="margin-left:15px;">
+        <button id="unset_section"/>Unset section</button>
+        <button id="set_section"/>Set section</button>
+      </div>
+    </div>
+
+    <div style="clear:both;"></div>
+  </div>
+
+</div>
+
+<hr class="largespace"/>
+
+<div class="demo">
+  <h3>Grid</h3>
+  <p>??????????????????????????????????select???????????????????????????????????</p>
+  <p><a href="http://lagoscript.org/#" class="view_source">?????? / View Source</a></p>
+  <pre class="demo_source"><code></code></pre>
+
+  <div class="demo_frame">
+    <style type="text/css">
+      #flickable4 {
+        border: 1px solid #CCC;
+        width: 320px;
+        height: 320px;
+        overflow: auto;
+        float: left;
+      }
+      #flickable4 ul {
+        list-style: none;
+        width:920px;
+        margin: 0;
+        padding: 5px;
+      }
+      #flickable4 ul li {
+        margin: 0;
+        padding: 20px;
+        float: left;
+      }
+      #flickable4 .block {
+        color: #FFF;
+        width: 245px;
+        height: 245px;
+        padding: 10px;
+        text-align:center;
+        float:left;
+      }
+      #flickable4 h4 {
+        color: #FFF;
+      }
+      #flickable4 .ui-flickable-container {
+        cursor: pointer;
+      }
+      #select_box {
+        border: 1px solid #CCC;
+        width: auto;
+        height: auto;
+        padding: 5px;
+        margin-left: 15px;
+        float: left;
+      }
+      #select_box td {
+        padding: 0;
+        margin: 0;
+        text-align: center;
+        vertical-align: middle;
+      }
+      #select_box td a {
+        color: #FFF;
+        background-color: #333;
+        line-height:30px;
+        width: 30px;
+        height: 30px;
+        margin: 5px;
+        display:block;
+      }
+      #select1:hover {background-color:#8c1b1b}
+      #select2:hover {background-color:#8c4a1b}
+      #select3:hover {background-color:#8c8c1b}
+      #select4:hover {background-color:#1b8c1b}
+      #select5:hover {background-color:#1b8c83}
+      #select6:hover {background-color:#1b508c}
+      #select7:hover {background-color:#531b8c}
+      #select8:hover {background-color:#8c1b53}
+      #select9:hover {background-color:#8c8c8c}
+    </style>
+
+    <script type="text/javascript">
+      $(function() {
+          var element = $('#flickable4').flickable({
+              section: 'li'
+          });
+
+          $('#select_box td a').click(function() {
+              var index = $(this).text() - 1;
+
+              element.flickable('select', index);
+              return false;
+          });
+      });
+    </script>
+
+    <div id="flickable4">
+      <ul>
+        <li><div class="block" style="background-color:#8c1b1b"><h4>Section 1</h4><p>Auctor nunc adipiscing proin magna, diam enim duis, sed vut ac scelerisque. Scelerisque nec porttitor enim, est magna risus enim.</p></div></li>
+        <li><div class="block" style="background-color:#8c4a1b"><h4>Section 2</h4><p>Sit lorem montes, enim mattis risus, natoque montes! Augue arcu ultrices risus mauris mattis, lorem? Eros amet a turpis porta. Amet turpis dictumst scelerisque nisi.</p></div></li>
+        <li><div class="block" style="background-color:#8c8c1b"><h4>Section 3</h4><p>Phasellus turpis lorem non sed auctor ridiculus ridiculus turpis lorem ultrices in scelerisque lorem facilisis lorem. Elit in elementum rhoncus. Ultricies platea? Est et, eros.</p></div></li>
+        <li><div class="block" style="background-color:#1b8c1b"><h4>Section 4</h4><p>Magnis tristique tincidunt duis lorem odio. Egestas lacus, aliquet odio tincidunt rhoncus aliquet proin auctor, et? Augue, cras porta enim magnis, pulvinar. Enim. Arcu? Tortor.</p></div></li>
+        <li><div class="block" style="background-color:#1b8c83"><h4>Section 5</h4><p>Nec quis. Adipiscing lacus ultricies! Ac elit hac turpis! Etiam nec elementum enim urna eu lectus, adipiscing amet facilisis tincidunt porttitor amet facilisis dolor sed.</p></div></li>
+        <li><div class="block" style="background-color:#1b508c"><h4>Section 6</h4><p>Odio urna lorem vel cursus amet est, dis lacus enim, dictumst cum. Facilisis ac vel. Scelerisque massa pellentesque? Rhoncus et. Platea, vut ultricies. Massa tristique.</p></div></li>
+        <li><div class="block" style="background-color:#531b8c"><h4>Section 7</h4><p>Elit scelerisque ut, platea turpis enim magna, massa. Quis amet! Eros. Sed! Massa diam nascetur, ac duis sit, mauris mid urna cum? Sit mauris. Rhoncus.</p></div></li>
+        <li><div class="block" style="background-color:#8c1b53"><h4>Section 8</h4><p>Lectus et sagittis dolor nec? Porttitor, est, in tristique quis tempor! Turpis arcu ridiculus proin penatibus? Augue porta pulvinar, aliquam turpis, vel porttitor nisi aliquet.</p></div></li>
+        <li><div class="block" style="background-color:#8c8c8c"><h4>Section 9</h4><p>Tortor purus nec, tempor turpis et, aliquet enim nisi ridiculus augue et ac augue tempor. Montes a sed! Turpis, eros cum mattis magna porttitor, elementum.</p></div></li>
+      </ul>
+      <div style="clear:both;"></div>
+    </div>
+    <table id="select_box">
+      <tr>
+        <td><a href="http://lagoscript.org/#" id="select1">1</a></td>
+        <td><a href="http://lagoscript.org/#" id="select2">2</a></td>
+        <td><a href="http://lagoscript.org/#" id="select3">3</a></td>
+      </tr>
+      <tr>
+        <td><a href="http://lagoscript.org/#" id="select4">4</a></td>
+        <td><a href="http://lagoscript.org/#" id="select5">5</a></td>
+        <td><a href="http://lagoscript.org/#" id="select6">6</a></td>
+      </tr>
+      <tr>
+        <td><a href="http://lagoscript.org/#" id="select7">7</a></td>
+        <td><a href="http://lagoscript.org/#" id="select8">8</a></td>
+        <td><a href="http://lagoscript.org/#" id="select9">9</a></td>
+      </tr>
+    </table>
+    <div style="clear:both;"></div>
+  </div>
+
+</div>
+
+<hr class="largespace"/>
+
+<div class="demo">
+  <h3>Options & Theming</h3>
+  <p>cancel???????????????????????????elasticConstant??????friction?????????????????????????????????CSS????????</p>
+  <p><a href="http://lagoscript.org/#" class="view_source">?????? / View Source</a></p>
+  <pre class="demo_source"><code></code></pre>
+
+  <div class="demo_frame">
+    <style type="text/css">
+      #flickable5 {
+        border: 1px solid #CCC;
+        width: 480px;
+        height: 320px;
+        overflow: hidden;
+      }
+      #flickable5 .container {
+        width: 720px;
+        height: 480px;
+        padding: 10px;
+      }
+      #flickable5 .ui-flickable-container {
+        background-color: #111;
+        cursor: move;
+      }
+      #flickable5.ui-flickable-disabled .ui-flickable-container, #flickable5 .ui-flickable-canceled {
+        cursor: default;
+      }
+      #flickable5 .block {
+        background-color: #EEE;
+        border: 1px solid #CCC;
+        width: 100px;
+        height: 100px;
+        padding: 10px;
+        margin: 10px;
+        float: left;
+      }
+    </style>
+
+    <script type="text/javascript">
+      $(function() {
+          $('#flickable5').flickable({
+              cancel: '.cancel',
+              elasticConstant: 0.05,
+              friction: 0.8
+          });
+
+          // disable/enable
+          var element = $('#flickable5'),
+              disableButton = $('#disable'),
+              enableButton = $('#enable');
+
+          disableButton.click(function() {
+              element.flickable('disable');
+              $(this).attr('disabled', true);
+              enableButton.attr('disabled', false);
+          });
+          enableButton.click(function() {
+              element.flickable('enable');
+              $(this).attr('disabled', true);
+              disableButton.attr('disabled', false);
+          }).click();
+      });
+    </script>
+
+    <div id="flickable5">
+      <div class="container">
+        <div class="block cancel">You can't drag me. </div>
+        <div class="block">
+          <p>Disable/Enable the flickable.</p>
+          <button id="disable">Disable</button></br>
+          <button id="enable" disabled>Enable</button>
+        </div>
+        <div style="clear:both;"></div>
+        <div style="padding:15px;">
+          <p>Non montes cursus pellentesque duis et purus etiam, dapibus, magna nec aliquam mus augue enim? Cursus, parturient est, <a href="http://lagoscript.org//jquery/flickable">auctor cum aenean cras dictumst turpis</a>, odio duis vut habitasse, mauris nunc et amet? Arcu et massa mattis parturient cum sit magna vel tincidunt nec turpis parturient rhoncus turpis proin. Eros sagittis.</p>
+        </div>
+        <div style="padding:15px;">
+          <p>Nunc! Auctor ac tristique adipiscing dolor, quis cursus elementum, scelerisque lacus porta magna duis aliquam, in lacus lacus elementum turpis nascetur mattis turpis mid arcu placerat scelerisque odio! Porttitor facilisis tristique amet porta, lacus etiam nascetur amet? Elementum habitasse dignissim amet urna nec in augue? Mauris ac vel dictumst.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<hr class="largespace"/>
+
+<div class="demo">
+  <p><a href="http://lagoscript.org/#" class="view_source">?????? / View Source</a></p>
+  <pre class="demo_source"><code></code></pre>
+
+  <div class="demo_frame">
+    <style type="text/css">
+      #flickable6 {
+        border: 1px solid #CCC;
+        width: 482px;
+        height: 322px;
+        overflow: hidden;
+      }
+      #flickable6 ul {
+        list-style: none;
+        width: 960px;
+        margin: 0;
+        padding: 0;
+        position: relative;
+      }
+      #flickable6 ul li {
+        width: 440px;
+        margin: 0;
+        padding: 20px;
+        float: left;
+      }
+      #flickable6 h4 {
+        font-size: 1.75em;
+      }
+    </style>
+
+    <script type="text/javascript">
+      $(function() {
+          $('#flickable6').flickable({
+              section: 'li'
+          });
+      });
+    </script>
+
+    <div id="flickable6">
+      <ul>
+        <li>
+          <h4>Dummy Image</h4>
+          <a href="http://lagoscript.org/http://dummyimage.com/440x220/ccc/fff"><img src="http://dummyimage.com/440x220/ccc/fff" /></a>
+        </li>
+        <li>
+          <h4>Dummy Form</h4>
+          <input type="checkbox" value="1"/> checkbox
+          <br/>
+          <input type="radio" name="radio"/> radio1
+          <input type="radio" name="radio"/> radio2
+          <br/>
+          <select>
+            <option>select1</option>
+            <option>select2</option>
+            <option>select3</option>
+          </select>
+          <br/>
+          <textarea style="width:300px;height:60px;"></textarea>
+          <br/>
+          <button>button</button>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+<hr class="largespace"/>
+
+    </div>
+    <hr class="space"/>
+    <div id="footer"></div>
+  </div>
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-11261552-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+
+
+</body>
+</html>
