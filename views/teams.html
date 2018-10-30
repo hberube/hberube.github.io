@@ -64,18 +64,16 @@
                                 <img ng-if="team.forwards[a].isInjured" class="img-rounded" src="img/Plaster-rw.png"
                                      style="height: 20px; cursor: pointer;"
                                      title="{{team.forwards[a].injury}} - {{team.forwards[a].injuryDescriptions[0]}}">
-                            <table>
-                                <tr>
-                                    <td>{{team.forwards[a].fullName}} &nbsp; </td><td><div class="hover"><img src="img/bar-chart.png">
-                                        <div class="tooltip">
+                                <br>{{team.forwards[a].fullName}} &nbsp; <br>
+                                <div class="hover"><img src="img/bar-chart.png">
+                                    <div class="tooltip">
                                         <table>
                                             <tr ng-repeat="players in teams.playersPerRound[a]"><td>{{ players.fullName }} [{{ players.points  }}]</td></tr>
-                                     </table>
-                                        </div>
+                                        </table>
                                     </div>
-                                </td>
-                                </tr>
-                        </table>
+                                </div>
+
+
                             </p>
                             <p class="bg-success img-thumbnail   playerNameTeamStatsHeader" style="width: 100%;">
                                 B: {{team.forwards[a].goals}}, P: {{team.forwards[a].passes}}<br>Pts:
