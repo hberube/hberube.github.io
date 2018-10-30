@@ -193,7 +193,7 @@
                             <div class="hover"><img src="img/bar-chart.png">
                                 <div class="tooltip">
                                     <table>
-                                        <tr ng-repeat="players in teams.playersPerRound[a]"><td>{{ players.fullName }} - {{ players.points  }} pts</td></tr>
+                                        <tr ng-repeat="players in teams.playersPerRound[a]"><td><a ng-if=" players.fullName.indexOf(team.forwards[a].fullName) > -1 ">&rarr;&nbsp;</a>{{ players.fullName }} - {{ players.points  }} pts</td></tr>
                                     </table>
                                 </div>
                             </div>
