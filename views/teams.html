@@ -67,7 +67,7 @@
                             <div class="hover"><img src="img/bar-chart.png">
                                 <div class="tooltip">
                                     <table>
-                                        <tr ng-repeat="players in teams.playersPerRound[a]"><td>{{players.selector+1}}. {{ players.fullName }} - {{ players.points  }} pts</td></tr>
+                                        <tr ng-repeat="players in teams.playersPerRound[a]"><td>{{$index+1}}. {{ players.fullName }} - {{ players.points  }} pts</td></tr>
                                     </table>
                                 </div>
                             </div>
