@@ -53,24 +53,29 @@
                 <table class="table  table-striped table-hover playerNameTeam" ng-cloak>
 
                     <tr>
-                        <td ng-repeat="a in [0,1,2]">
-                            <p class="bg-info img-thumbnail playerNameTeamStatsHeader"
+                        <td ng-repeat="a in [0,1,2]"><p class="bg-info img-thumbnail playerNameTeamStatsHeader"
                                                         style=" width: 100%;">
-                                <img class="img-rounded" src="{{team.forwards[a].photoId}}.jpg" style="height: 55px;">
-                                <img src="img/thumbs-up.png" ng-if="team.forwards[a].isBest" style="width: 25px;"
-                                     title="Meilleur joueur de son groupe.">
-                                <img src="img/thumbs-down.png" ng-if="team.forwards[a].isWorst" style="width: 25px;"
-                                     title="Pire joueur de son groupe.">
-                                <img ng-if="team.forwards[a].isInjured" class="img-rounded" src="img/Plaster-rw.png"
-                                     style="height: 20px; cursor: pointer;"
-                                     title="{{team.forwards[a].injury}} - {{team.forwards[a].injuryDescriptions[0]}}">
-                                <br>{{team.forwards[a].fullName}} &nbsp; <br>
-                              </p>
+                            <img class="img-rounded" src="{{team.forwards[a].photoId}}.jpg" style="height: 55px;">
+                            <img src="img/thumbs-up.png" ng-if="team.forwards[a].isBest" style="width: 25px;"
+                                 title="Meilleur joueur de son groupe.">
+                            <img src="img/thumbs-down.png" ng-if="team.forwards[a].isWorst" style="width: 25px;"
+                                 title="Pire joueur de son groupe.">
+                            <img ng-if="team.forwards[a].isInjured" class="img-rounded" src="img/Plaster-rw.png"
+                                 style="height: 20px; cursor: pointer;"
+                                 title="{{team.forwards[a].injury}} - {{team.forwards[a].injuryDescriptions[0]}}">
+                            <br>{{team.forwards[a].fullName}} &nbsp;
+                            <div class="hover"><img src="img/bar-chart.png">
+                                <div class="tooltip">
+                                    <table>
+                                        <tr ng-repeat="players in teams.playersPerRound[a]"><td>{{ players.fullName }} - {{ players.points  pts }}</td></tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </p>
                             <p class="bg-success img-thumbnail   playerNameTeamStatsHeader" style="width: 100%;">
                                 B: {{team.forwards[a].goals}}, P: {{team.forwards[a].passes}}<br>Pts:
                                 {{team.forwards[a].points}}
                             </p>
-
                         </td>
                     </tr>
                     <tr>
@@ -138,7 +143,6 @@
                             <img ng-if="team.forwards[a].isInjured" class="img-rounded" src="img/Plaster-rw.png"
                                  style="height: 20px; cursor: pointer;"
                                  title="{{team.forwards[a].injury}} - {{team.forwards[a].injuryDescriptions[0]}}">
-
                             <br>{{team.forwards[a].fullName}} &nbsp;
                         </p>
 
@@ -157,8 +161,6 @@
                             <img ng-if="team.forwards[a].isInjured" class="img-rounded" src="img/Plaster-rw.png"
                                  style="height: 20px; cursor: pointer;"
                                  title="{{team.forwards[a].injury}} - {{team.forwards[a].injuryDescriptions[0]}}">
-
-
                             <br>{{team.forwards[a].fullName}} &nbsp;
                         </p>
 
