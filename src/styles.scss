@@ -1,0 +1,182 @@
+@use '@angular/material' as mat;
+
+@include mat.core();
+
+$primary: mat.define-palette(mat.$blue-palette);
+$accent: mat.define-palette(mat.$light-blue-palette);
+$warn: mat.define-palette(mat.$red-palette);
+
+$theme: mat.define-light-theme((
+  color: (
+    primary: $primary,
+    accent: $accent,
+    warn: $warn,
+  )
+));
+
+@include mat.all-component-themes($theme);
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-image: url('/assets/img/hockey_nbc_bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-color: #1a1a2e;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// Smooth transitions for all interactive elements
+button, a, mat-card, mat-expansion-panel, .highlight-item {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+// Pulse animation for highlights
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+// Fade in animation
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Trophy bounce animation
+@keyframes trophyBounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+// Add semi-transparent background to cards for better readability
+mat-card {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(10px);
+  animation: fadeIn 0.5s ease-out;
+}
+
+mat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2) !important;
+}
+
+// Make toolbar slightly transparent
+mat-toolbar {
+  background-color: rgba(25, 118, 210, 0.95) !important;
+  backdrop-filter: blur(10px);
+}
+
+// Expansion panel animations
+mat-expansion-panel {
+  animation: fadeIn 0.4s ease-out;
+}
+
+mat-expansion-panel:hover {
+  transform: translateY(-2px);
+}
+
+// Better focus states for accessibility
+button:focus-visible, a:focus-visible {
+  outline: 3px solid #1976d2;
+  outline-offset: 2px;
+}
+
+// Loading skeleton animation
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+// Mobile optimizations
+@media (max-width: 768px) {
+  // Disable hover effects on mobile (use active instead)
+  mat-card:hover, mat-expansion-panel:hover {
+    transform: none;
+  }
+
+  mat-card:active, mat-expansion-panel:active {
+    transform: scale(0.98);
+  }
+
+  // Make tables scrollable horizontally on mobile
+  .mat-mdc-table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  // Improve touch targets (minimum 44x44px for iOS)
+  .mat-mdc-button {
+    min-width: 48px !important;
+    min-height: 48px !important;
+  }
+
+  // Better spacing for mobile
+  mat-card-header {
+    padding: 12px !important;
+  }
+
+  mat-card-content {
+    padding: 12px !important;
+  }
+
+  mat-card-title {
+    font-size: 18px !important;
+  }
+
+  // Make expansion panels more mobile-friendly
+  mat-expansion-panel-header {
+    padding: 12px 16px !important;
+  }
+
+  // Reduce animation complexity on mobile for better performance
+  * {
+    animation-duration: 0.2s !important;
+  }
+}
+
+// Very small screens
+@media (max-width: 480px) {
+  mat-card-title {
+    font-size: 16px !important;
+  }
+
+  body {
+    font-size: 14px;
+  }
+}

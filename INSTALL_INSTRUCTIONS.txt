@@ -1,0 +1,108 @@
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                    POOL BÉRUBÉ ROY - MODERNIZED VERSION                      ║
+║                         Installation Instructions                            ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+STEP 1: INSTALL NODE.JS (if not already installed)
+───────────────────────────────────────────────────
+Download and install Node.js 18 or higher from:
+https://nodejs.org/
+
+Verify installation:
+  node --version
+  npm --version
+
+
+STEP 2: INSTALL DEPENDENCIES
+───────────────────────────────────────────────────
+Open a terminal in this directory and run:
+
+  npm install
+
+This will download all required packages (~200MB).
+It may take 2-5 minutes depending on your internet speed.
+
+
+STEP 3: START THE APPLICATION
+───────────────────────────────────────────────────
+Run the development server:
+
+  npm start
+
+Wait for "Compiled successfully" message.
+Then open your browser to:
+
+  http://localhost:4200
+
+
+STEP 4: VERIFY IT WORKS
+───────────────────────────────────────────────────
+You should see:
+✓ Navigation bar with logo and menu items
+✓ Leaders page showing pool standings
+✓ Ability to navigate between pages
+✓ Data loading from JSON files
+
+
+STEP 5: BUILD FOR PRODUCTION (when ready)
+───────────────────────────────────────────────────
+To create optimized production files:
+
+  npm run build
+
+Output will be in: dist/hockey-pool/
+Upload these files to your web server.
+
+
+TROUBLESHOOTING
+───────────────────────────────────────────────────
+Problem: "npm: command not found"
+Solution: Install Node.js (see Step 1)
+
+Problem: Port 4200 already in use
+Solution: npm start -- --port 4201
+
+Problem: Module not found errors
+Solution: Delete node_modules and run npm install again
+
+Problem: JSON data not loading
+Solution: Ensure JSON files are in the json/ directory
+
+
+WHAT'S NEW?
+───────────────────────────────────────────────────
+✓ Modern Angular 17+ framework
+✓ TypeScript for better code quality
+✓ Angular Material for beautiful UI
+✓ Responsive design for mobile
+✓ Auto-refresh every 60 seconds
+✓ Faster performance
+✓ Better maintainability
+
+
+DOCUMENTATION
+───────────────────────────────────────────────────
+README.md              - Project overview
+SETUP.md               - Detailed setup guide
+MIGRATION_GUIDE.md     - Technical migration details
+MODERNIZATION_SUMMARY.md - What changed and why
+
+
+NEED HELP?
+───────────────────────────────────────────────────
+Check the documentation files above or visit:
+https://angular.io/docs
+
+
+NEXT STEPS
+───────────────────────────────────────────────────
+1. Run: npm install
+2. Run: npm start
+3. Open: http://localhost:4200
+4. Test all features
+5. Build for production when ready
+
+
+═══════════════════════════════════════════════════════════════════════════════
+                            Happy coding! 🏒
+═══════════════════════════════════════════════════════════════════════════════

@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Pool Bérubé Roy - Pool de Hockey LNH</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="Pool de hockey LNH - Classement, statistiques, équipes et blessures">
+  <meta name="theme-color" content="#1976d2">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  
+  <!-- Icons -->
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="manifest" href="manifest.json">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+  <app-root>
+    <!-- Loading state -->
+    <div style="display: flex; justify-content: center; align-items: center; height: 100vh; background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);">
+      <div style="text-align: center; color: white;">
+        <div style="width: 60px; height: 60px; border: 4px solid rgba(255,255,255,0.3); border-top-color: #1976d2; border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto 20px;"></div>
+        <h2 style="font-family: Roboto, sans-serif; font-weight: 300; margin: 0;">Chargement...</h2>
+      </div>
+    </div>
+    <style>
+      @keyframes spin {
+        to { transform: rotate(360deg); }
+      }
+    </style>
+  </app-root>
+  <noscript>
+    <div style="text-align: center; padding: 50px; font-family: sans-serif; background: white;">
+      <h1>JavaScript requis</h1>
+      <p>Cette application nécessite JavaScript pour fonctionner.</p>
+      <p>Veuillez activer JavaScript dans votre navigateur.</p>
+    </div>
+  </noscript>
+</body>
+</html>
