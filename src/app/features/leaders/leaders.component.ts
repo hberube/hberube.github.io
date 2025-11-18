@@ -37,8 +37,6 @@ import { PoolTeam, LeadersResponse, TeamStats, Player, Goalie } from '../../core
                 <div class="highlight-content">
                   <span class="highlight-label">28j:</span>
                   <img [src]="'assets/img/' + data.bestLast28Days.userLogo" [alt]="data.bestLast28Days.teamUserName" class="highlight-logo">
-                  <span class="highlight-name">{{ data.bestLast28Days.teamUserName }}</span>
-                  <span class="highlight-points">{{ data.bestLast28Days.pointsDiff }}pts</span>
                 </div>
               </div>
 
@@ -47,8 +45,6 @@ import { PoolTeam, LeadersResponse, TeamStats, Player, Goalie } from '../../core
                 <div class="highlight-content">
                   <span class="highlight-label">14j:</span>
                   <img [src]="'assets/img/' + data.bestLast14Days.userLogo" [alt]="data.bestLast14Days.teamUserName" class="highlight-logo">
-                  <span class="highlight-name">{{ data.bestLast14Days.teamUserName }}</span>
-                  <span class="highlight-points">{{ data.bestLast14Days.pointsDiff }}pts</span>
                 </div>
               </div>
 
@@ -57,8 +53,6 @@ import { PoolTeam, LeadersResponse, TeamStats, Player, Goalie } from '../../core
                 <div class="highlight-content">
                   <span class="highlight-label">7j:</span>
                   <img [src]="'assets/img/' + data.bestLast7Days.userLogo" [alt]="data.bestLast7Days.teamUserName" class="highlight-logo">
-                  <span class="highlight-name">{{ data.bestLast7Days.teamUserName }}</span>
-                  <span class="highlight-points">{{ data.bestLast7Days.pointsDiff }}pts</span>
                 </div>
               </div>
 
@@ -66,10 +60,8 @@ import { PoolTeam, LeadersResponse, TeamStats, Player, Goalie } from '../../core
                 <div class="highlight-item best-yesterday">
                   <mat-icon class="trophy-icon">star</mat-icon>
                   <div class="highlight-content">
-                    <span class="highlight-label">Hier:</span>
+                    <span class="highlight-label">1j:</span>
                     <img [src]="'assets/img/' + data.bestYesterday.userLogo" [alt]="data.bestYesterday.teamUserName" class="highlight-logo">
-                    <span class="highlight-name">{{ data.bestYesterday.teamUserName }}</span>
-                    <span class="highlight-points">{{ data.bestYesterday.pointsDiff }}pts</span>
                   </div>
                 </div>
               }
@@ -452,14 +444,6 @@ import { PoolTeam, LeadersResponse, TeamStats, Player, Goalie } from '../../core
       object-fit: cover;
     }
 
-    .highlight-name {
-      font-size: 12px;
-      font-weight: 600;
-      max-width: 120px;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
     .highlight-points {
       font-size: 13px;
       font-weight: 700;
@@ -480,7 +464,6 @@ import { PoolTeam, LeadersResponse, TeamStats, Player, Goalie } from '../../core
 
     .best-yesterday {
       background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
-      animation: pulse 2s ease-in-out infinite;
     }
 
     .leaders-container {
@@ -635,7 +618,7 @@ import { PoolTeam, LeadersResponse, TeamStats, Player, Goalie } from '../../core
       background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%) !important;
       border-color: #ffa000 !important;
       box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4) !important;
-      animation: fadeIn 0.5s ease-out, pulse 3s ease-in-out infinite;
+      animation: fadeIn 0.5s ease-out;
     }
 
     .team-card.first-place:hover {
@@ -945,6 +928,12 @@ import { PoolTeam, LeadersResponse, TeamStats, Player, Goalie } from '../../core
     }
 
     @media (max-width: 768px) {
+      /* Disable all animations on mobile for better performance */
+      * {
+        animation: none !important;
+        transition: none !important;
+      }
+
       .highlights-bar {
         padding: 0 8px;
         gap: 6px;
@@ -959,16 +948,12 @@ import { PoolTeam, LeadersResponse, TeamStats, Player, Goalie } from '../../core
       }
 
       .highlight-item:active {
-        transform: scale(0.95);
+        transform: none;
       }
 
       .highlight-logo {
         width: 24px;
         height: 24px;
-      }
-
-      .highlight-name {
-        font-size: 12px;
       }
 
       .highlight-points {
@@ -979,12 +964,16 @@ import { PoolTeam, LeadersResponse, TeamStats, Player, Goalie } from '../../core
         padding: 8px;
       }
 
+      .team-card {
+        animation: none !important;
+      }
+
       .team-card:hover {
         transform: none;
       }
 
       .team-card:active {
-        transform: scale(0.98);
+        transform: none;
       }
 
       .player-photo-small:hover {

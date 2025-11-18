@@ -47,15 +47,7 @@ button, a, mat-card, mat-expansion-panel, .highlight-item {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-// Pulse animation for highlights
-@keyframes pulse {
-  0%, 100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.05);
-  }
-}
+// Pulse animation removed - didn't work well
 
 // Fade in animation
 @keyframes fadeIn {
@@ -124,13 +116,19 @@ button:focus-visible, a:focus-visible {
 
 // Mobile optimizations
 @media (max-width: 768px) {
+  // Disable ALL animations and transitions on mobile for better performance
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+
   // Disable hover effects on mobile (use active instead)
   mat-card:hover, mat-expansion-panel:hover {
     transform: none;
   }
 
   mat-card:active, mat-expansion-panel:active {
-    transform: scale(0.98);
+    transform: none;
   }
 
   // Make tables scrollable horizontally on mobile
@@ -164,10 +162,6 @@ button:focus-visible, a:focus-visible {
     padding: 12px 16px !important;
   }
 
-  // Reduce animation complexity on mobile for better performance
-  * {
-    animation-duration: 0.2s !important;
-  }
 }
 
 // Very small screens

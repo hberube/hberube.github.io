@@ -118,22 +118,31 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     }
 
     @media (max-width: 768px) {
+      /* Disable all animations on mobile */
       .banner {
         margin: 8px;
         border-radius: 12px;
         position: relative;
+        animation: none !important;
+        transition: none !important;
       }
 
       .banner:hover {
         transform: none;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      }
+
+      .banner-image {
+        border-radius: 12px;
+        transition: none !important;
       }
 
       .banner:hover .banner-image {
         transform: none;
       }
 
-      .banner-image {
-        border-radius: 12px;
+      .main-content {
+        animation: none !important;
       }
 
       .desktop-nav {
