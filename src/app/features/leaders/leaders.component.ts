@@ -193,7 +193,11 @@ import { PoolTeam, LeadersResponse, TeamStats, Player, Goalie } from '../../core
               
               <mat-expansion-panel-header>
                 <!-- Rank Badge -->
-                <div class="rank-badge" [class.top-three]="team.pos <= 3">
+                <div class="rank-badge" 
+                     [class.top-three]="team.pos <= 3"
+                     [class.top-five]="team.pos > 3 && team.pos <= 5"
+                     [class.middle]="team.pos > 5 && team.pos <= lastPlace - 3"
+                     [class.bottom]="team.pos > lastPlace - 3">
                   @if (team.pos === 1) {
                     <span class="rank-icon">🥇</span>
                   } @else if (team.pos === 2) {
@@ -747,10 +751,26 @@ import { PoolTeam, LeadersResponse, TeamStats, Player, Goalie } from '../../core
       justify-content: center;
       font-weight: bold;
       font-size: 18px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
     }
 
     .rank-badge.top-three {
       background: transparent;
+    }
+
+    .rank-badge.top-five {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+    }
+
+    .rank-badge.middle {
+      background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+      color: white;
+    }
+
+    .rank-badge.bottom {
+      background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+      color: white;
     }
 
     .rank-icon {
@@ -758,7 +778,9 @@ import { PoolTeam, LeadersResponse, TeamStats, Player, Goalie } from '../../core
     }
 
     .rank-number {
-      color: #666;
+      color: white;
+      font-size: 18px;
+      font-weight: 900;
     }
 
     .trend-indicator {
