@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatTableModule } from '@angular/material/table';
@@ -36,24 +36,24 @@ import { PoolTeam, LeadersResponse, TeamStats, Player, Goalie } from '../../core
                 <mat-icon class="trophy-icon">emoji_events</mat-icon>
                 <div class="highlight-content">
                   <span class="highlight-label">28j:</span>
-                  <img [src]="'assets/img/' + data.bestLast28Days.userLogo" [alt]="data.bestLast28Days.teamUserName" class="highlight-logo">
                 </div>
+                <img [src]="'assets/img/' + data.bestLast28Days.userLogo" [alt]="data.bestLast28Days.teamUserName" class="highlight-logo">
               </div>
 
               <div class="highlight-item best-14days">
                 <mat-icon class="trophy-icon">emoji_events</mat-icon>
                 <div class="highlight-content">
                   <span class="highlight-label">14j:</span>
-                  <img [src]="'assets/img/' + data.bestLast14Days.userLogo" [alt]="data.bestLast14Days.teamUserName" class="highlight-logo">
                 </div>
+                <img [src]="'assets/img/' + data.bestLast14Days.userLogo" [alt]="data.bestLast14Days.teamUserName" class="highlight-logo">
               </div>
 
               <div class="highlight-item best-7days">
                 <mat-icon class="trophy-icon">emoji_events</mat-icon>
                 <div class="highlight-content">
                   <span class="highlight-label">7j:</span>
-                  <img [src]="'assets/img/' + data.bestLast7Days.userLogo" [alt]="data.bestLast7Days.teamUserName" class="highlight-logo">
                 </div>
+                <img [src]="'assets/img/' + data.bestLast7Days.userLogo" [alt]="data.bestLast7Days.teamUserName" class="highlight-logo">
               </div>
 
               @if (data.bestYesterday.teamName) {
@@ -61,8 +61,8 @@ import { PoolTeam, LeadersResponse, TeamStats, Player, Goalie } from '../../core
                   <mat-icon class="trophy-icon">star</mat-icon>
                   <div class="highlight-content">
                     <span class="highlight-label">1j:</span>
-                    <img [src]="'assets/img/' + data.bestYesterday.userLogo" [alt]="data.bestYesterday.teamUserName" class="highlight-logo">
                   </div>
+                  <img [src]="'assets/img/' + data.bestYesterday.userLogo" [alt]="data.bestYesterday.teamUserName" class="highlight-logo">
                 </div>
               }
             </div>
@@ -205,6 +205,21 @@ import { PoolTeam, LeadersResponse, TeamStats, Player, Goalie } from '../../core
                   }
                 </div>
 
+                <!-- Trend Indicator -->
+                @if (team.diffPosition !== 0) {
+                  <div class="trend-indicator" 
+                       [class.trend-up]="team.diffPosition > 0"
+                       [class.trend-down]="team.diffPosition < 0">
+                    @if (team.diffPosition > 0) {
+                      <span class="trend-arrow">↑</span>
+                      <span class="trend-value">{{ team.diffPosition }}</span>
+                    } @else {
+                      <span class="trend-arrow">↓</span>
+                      <span class="trend-value">{{ Math.abs(team.diffPosition) }}</span>
+                    }
+                  </div>
+                }
+
                 <mat-panel-title>
                   <!-- Card Grid Layout -->
                   <div class="card-grid">
@@ -228,6 +243,11 @@ import { PoolTeam, LeadersResponse, TeamStats, Player, Goalie } from '../../core
                   </div>
                   <div class="total-points">
                     <div class="points-value">{{ team.points }}</div>
+                    @if (team.pointsDiff !== 0) {
+                      <div class="points-diff" [class.positive]="team.pointsDiff > 0" [class.negative]="team.pointsDiff < 0">
+                        {{ team.pointsDiff > 0 ? '+' : '' }}{{ team.pointsDiff }}
+                      </div>
+                    }
                     <div class="points-label">POINTS</div>
                   </div>
                 </div>
@@ -236,18 +256,38 @@ import { PoolTeam, LeadersResponse, TeamStats, Player, Goalie } from '../../core
                 <div class="stats-row">
                   <div class="stat-item">
                     <span class="stat-value">{{ team.goals }}</span>
+                    @if (team.goalsDiff !== 0) {
+                      <span class="stat-diff" [class.positive]="team.goalsDiff > 0" [class.negative]="team.goalsDiff < 0">
+                        {{ team.goalsDiff > 0 ? '+' : '' }}{{ team.goalsDiff }}
+                      </span>
+                    }
                     <span class="stat-label">B</span>
                   </div>
                   <div class="stat-item">
                     <span class="stat-value">{{ team.passes }}</span>
+                    @if (team.passesDiff !== 0) {
+                      <span class="stat-diff" [class.positive]="team.passesDiff > 0" [class.negative]="team.passesDiff < 0">
+                        {{ team.passesDiff > 0 ? '+' : '' }}{{ team.passesDiff }}
+                      </span>
+                    }
                     <span class="stat-label">P</span>
                   </div>
                   <div class="stat-item">
                     <span class="stat-value">{{ team.goaliesWins }}</span>
+                    @if (team.goaliesWinDiff !== 0) {
+                      <span class="stat-diff" [class.positive]="team.goaliesWinDiff > 0" [class.negative]="team.goaliesWinDiff < 0">
+                        {{ team.goaliesWinDiff > 0 ? '+' : '' }}{{ team.goaliesWinDiff }}
+                      </span>
+                    }
                     <span class="stat-label">V</span>
                   </div>
                   <div class="stat-item">
                     <span class="stat-value">{{ team.goaliesShutOuts }}</span>
+                    @if (team.goaliesShutOutsDiff !== 0) {
+                      <span class="stat-diff" [class.positive]="team.goaliesShutOutsDiff > 0" [class.negative]="team.goaliesShutOutsDiff < 0">
+                        {{ team.goaliesShutOutsDiff > 0 ? '+' : '' }}{{ team.goaliesShutOutsDiff }}
+                      </span>
+                    }
                     <span class="stat-label">BL</span>
                   </div>
                   </div>
@@ -288,8 +328,57 @@ import { PoolTeam, LeadersResponse, TeamStats, Player, Goalie } from '../../core
         </div>
       }
     </div>
+
+    <!-- Last Updated Info (Bottom) -->
+    <div class="update-info">
+      <mat-icon class="update-icon">schedule</mat-icon>
+      <span class="update-text">Dernière mise à jour: {{ timeSinceUpdate }}</span>
+      <button mat-icon-button (click)="refresh()" class="refresh-btn" title="Actualiser">
+        <mat-icon>refresh</mat-icon>
+      </button>
+    </div>
   `,
   styles: [`
+    .update-info {
+      max-width: 1200px;
+      margin: 24px auto 16px;
+      padding: 12px 20px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.95) 100%);
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      animation: fadeIn 0.5s ease-out;
+      opacity: 0.8;
+    }
+
+    .update-info:hover {
+      opacity: 1;
+    }
+
+    .update-icon {
+      color: #1976d2;
+      font-size: 20px;
+      width: 20px;
+      height: 20px;
+    }
+
+    .update-text {
+      flex: 1;
+      font-size: 14px;
+      font-weight: 600;
+      color: #666;
+    }
+
+    .refresh-btn {
+      color: #1976d2 !important;
+    }
+
+    .refresh-btn:hover {
+      background: rgba(25, 118, 210, 0.1) !important;
+    }
+
     .highlights-panel {
       margin: 12px auto;
       max-width: 1200px;
@@ -326,16 +415,17 @@ import { PoolTeam, LeadersResponse, TeamStats, Player, Goalie } from '../../core
 
     .highlight-item {
       display: flex;
+      flex-direction: column;
       align-items: center;
-      gap: 6px;
-      padding: 6px 10px;
-      border-radius: 20px;
+      gap: 8px;
+      padding: 10px 12px;
+      border-radius: 16px;
       color: white;
-      white-space: nowrap;
       flex-shrink: 0;
       cursor: pointer;
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      min-width: 70px;
     }
 
     .highlight-item:hover {
@@ -427,21 +517,23 @@ import { PoolTeam, LeadersResponse, TeamStats, Player, Goalie } from '../../core
     .highlight-content {
       display: flex;
       align-items: center;
-      gap: 6px;
+      justify-content: center;
+      width: 100%;
     }
 
     .highlight-label {
-      font-size: 11px;
-      font-weight: 600;
-      opacity: 0.9;
+      font-size: 16px;
+      font-weight: 700;
+      opacity: 0.95;
     }
 
     .highlight-logo {
-      width: 26px;
-      height: 26px;
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
       border: 2px solid white;
       object-fit: cover;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
     }
 
     .highlight-points {
@@ -663,11 +755,43 @@ import { PoolTeam, LeadersResponse, TeamStats, Player, Goalie } from '../../core
 
     .rank-icon {
       font-size: 32px;
-      animation: trophyBounce 2s ease-in-out infinite;
     }
 
     .rank-number {
       color: #666;
+    }
+
+    .trend-indicator {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      padding: 4px 8px;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 700;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    }
+
+    .trend-indicator.trend-up {
+      background: linear-gradient(135deg, #4caf50 0%, #66bb6a 100%);
+      color: white;
+    }
+
+    .trend-indicator.trend-down {
+      background: linear-gradient(135deg, #f44336 0%, #ef5350 100%);
+      color: white;
+    }
+
+    .trend-arrow {
+      font-size: 16px;
+      font-weight: 900;
+    }
+
+    .trend-value {
+      font-size: 12px;
     }
 
     .card-grid {
@@ -813,6 +937,24 @@ import { PoolTeam, LeadersResponse, TeamStats, Player, Goalie } from '../../core
       margin-top: 4px;
     }
 
+    .points-diff {
+      font-size: 16px;
+      font-weight: 700;
+      margin-top: 4px;
+      padding: 4px 10px;
+      border-radius: 12px;
+    }
+
+    .points-diff.positive {
+      color: #e8f5e9;
+      background: rgba(76, 175, 80, 0.3);
+    }
+
+    .points-diff.negative {
+      color: #ffebee;
+      background: rgba(244, 67, 54, 0.3);
+    }
+
     .stats-row {
       display: flex;
       justify-content: space-around;
@@ -827,13 +969,30 @@ import { PoolTeam, LeadersResponse, TeamStats, Player, Goalie } from '../../core
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 4px;
+      gap: 2px;
     }
 
     .stat-value {
       font-size: 20px;
       font-weight: 700;
       color: #1a1a1a;
+    }
+
+    .stat-diff {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 8px;
+    }
+
+    .stat-diff.positive {
+      color: #1b5e20;
+      background: rgba(76, 175, 80, 0.2);
+    }
+
+    .stat-diff.negative {
+      color: #c62828;
+      background: rgba(244, 67, 54, 0.2);
     }
 
     .stat-label {
@@ -952,8 +1111,13 @@ import { PoolTeam, LeadersResponse, TeamStats, Player, Goalie } from '../../core
       }
 
       .highlight-logo {
-        width: 24px;
-        height: 24px;
+        width: 36px;
+        height: 36px;
+      }
+
+      .highlight-item {
+        min-width: 60px;
+        padding: 8px 10px;
       }
 
       .highlight-points {
@@ -1087,12 +1251,16 @@ import { PoolTeam, LeadersResponse, TeamStats, Player, Goalie } from '../../core
     }
   `]
 })
-export class LeadersComponent implements OnInit {
+export class LeadersComponent implements OnInit, OnDestroy {
   leaders$!: Observable<PoolTeam[]>;
   leaderData$!: Observable<LeadersResponse>;
   teams$!: Observable<TeamStats[]>;
   expandedTeam: string | null = null;
   lastPlace = 0;
+  Math = Math;
+  lastUpdated: Date = new Date();
+  timeSinceUpdate: string = 'à l\'instant';
+  private updateInterval: any;
 
   constructor(private poolDataService: PoolDataService) {}
 
@@ -1101,6 +1269,14 @@ export class LeadersComponent implements OnInit {
   bestGoalies$!: Observable<Goalie[]>;
 
   ngOnInit(): void {
+    this.lastUpdated = new Date();
+    this.updateTimestamp();
+    
+    // Update timestamp every 30 seconds
+    this.updateInterval = setInterval(() => {
+      this.updateTimestamp();
+    }, 30000);
+
     this.leaderData$ = this.poolDataService.getLeaders();
     this.teams$ = this.poolDataService.getTeams();
     this.bestForwards$ = this.poolDataService.getBestForwards();
@@ -1115,6 +1291,36 @@ export class LeadersComponent implements OnInit {
         return response.leaders || [];
       })
     );
+  }
+
+  ngOnDestroy(): void {
+    if (this.updateInterval) {
+      clearInterval(this.updateInterval);
+    }
+  }
+
+  updateTimestamp(): void {
+    const now = new Date();
+    const diffMs = now.getTime() - this.lastUpdated.getTime();
+    const diffMins = Math.floor(diffMs / 60000);
+    const diffHours = Math.floor(diffMs / 3600000);
+    const diffDays = Math.floor(diffMs / 86400000);
+
+    if (diffMins < 1) {
+      this.timeSinceUpdate = 'à l\'instant';
+    } else if (diffMins < 60) {
+      this.timeSinceUpdate = `il y a ${diffMins} minute${diffMins > 1 ? 's' : ''}`;
+    } else if (diffHours < 24) {
+      this.timeSinceUpdate = `il y a ${diffHours} heure${diffHours > 1 ? 's' : ''}`;
+    } else {
+      this.timeSinceUpdate = `il y a ${diffDays} jour${diffDays > 1 ? 's' : ''}`;
+    }
+  }
+
+  refresh(): void {
+    this.lastUpdated = new Date();
+    this.updateTimestamp();
+    window.location.reload();
   }
 
   toggleTeam(teamName: string): void {
